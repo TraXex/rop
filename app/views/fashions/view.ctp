@@ -1,12 +1,18 @@
-<?php
-//pr($post);
-//pr($comments);
-?>
 <div class="widget_804">
     <div class="sos_div content-div">
         <div class="title">
             <h2><?php echo $post['PostDetail']['type']; ?></h2>
-            <?php echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'fashions', 'action' => 'index'))); ?>
+            
+                <div class="extra-actions">
+                    <?php echo $this->Html->image("drop-down.png", array("alt" => "drop",'class'=>'extra-actions')); ?>
+                    <div class="action-list">
+                        <ul>
+                            <li><a href="#">Edit</a></li>
+                            <li><a href="#">Delete</a></li>
+                            <li><a href="#">Flag Post</a></li>
+                        </ul>
+                    </div>
+                </div>
         </div>
         <div class="info">
             <div class="heading">
@@ -40,7 +46,7 @@
                         <ul>
                             <li><?php echo $this->Html->image("comment-icon.png", array("alt" => "comments", 'url' => '#CommentComment')); ?></li>
                             <li><?php echo $this->Html->image("icon-02.png", array("alt" => "view", 'class' => 'view', 'title' => $post['PostDetail']['total_views'])); ?></li>
-                            <li><?php echo $this->Html->image("share-icon.png", array("alt" => "share")); ?></li>
+                            <li><a href="#" class="share"><?php echo $this->Html->image("share-icon.png", array("alt" => "share")); ?></a></li>
                             <li><?php
                 $beats = $post['Heartbeat'];
 
@@ -115,6 +121,17 @@
         ?>
     </div>
 </div>
+<div class="hidden-elements" style="display: none;">
+    <div id="share-this">
+        <span class='st_facebook_large' displayText='Facebook'></span>
+        <span class='st_twitter_large' displayText='Tweet'></span>
+        <span class='st_linkedin_large' displayText='LinkedIn'></span>
+        <span class='st_pinterest_large' displayText='Pinterest'></span>
+        <span class='st_email_large' displayText='Email'></span>
+        <span class='st_sharethis_large' displayText='ShareThis'></span>
+    </div>
+    
+</div>
 <script>
     
     $(document).ready(function(){
@@ -138,5 +155,10 @@
             $(this).toggleClass("on");
         }
     );
+    
+    
+        $('.share').click(function(){
+             $.colorbox({html:$("#share-this").clone(),'opacity':'0.15'});
+        });
     });
 </script>

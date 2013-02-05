@@ -15,9 +15,14 @@
         <?php echo $this->Html->script('modernizr'); ?>
        <?php echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); ?>
             <![endif]--> 	
+        
+        <?php echo $this->Html->css('colorbox'); ?>
         <?php echo $this->Html->css(array('reset', 'main', 'fonts/fonts', 'super-fish', 'responsive')); ?>
 
-        
+        <?php echo $this->Html->script('colorbox'); ?>
+        <script type="text/javascript">var switchTo5x=true;</script>
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">stLight.options({publisher: "ur-f3b5f3ea-6a8b-185-941a-e61efe83a432", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>
     </head>
     <body>
         <div id="pagewidth">

@@ -4,7 +4,7 @@ class HomeController extends AppController {
 
     var $name = 'Home';
     var $components = array('Authsome', 'Session');
-    var $helpers = array('Html', 'Form', 'Js' => array('Jquery'), 'Text','Time');
+    var $helpers = array('Html', 'Form', 'Js' => array('Jquery'), 'Text', 'Time');
     var $uses = array('Post', 'PostDetail', 'Comment', 'Heartbeat', 'Advice', 'Reply', 'User');
     var $layout = 'two-column';
 
@@ -99,10 +99,14 @@ class HomeController extends AppController {
     public function index() {
         $this->layout = 'three-column';
 //        $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home')));
-        $communities=array('fashion','education');
+        $userId = $this->Authsome->get('User.id');
+
+        $communities = $this->User->find('list', array('fields' => 'communities', 'conditions' => array('User.id' => $userId)));
+        $commList = $communities[$userId];
+        $commArray = explode(",", $commList);
         $this->paginate = array(
-            'conditions'=>array('PostDetail.related_to'=>$communities),
-            'limit' => 5,'order'=>array('Post.created DESC')
+            'conditions' => array('PostDetail.related_to' => $commArray),
+            'limit' => 5, 'order' => array('Post.created DESC')
         );
         $posts = $this->paginate('Post');
         //pr($posts);
@@ -113,14 +117,13 @@ class HomeController extends AppController {
         $this->layout = 'three-column';
         // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home','PostDetail.type' => 'discussion')));
         $this->paginate = array(
-            'conditions' => array( 'PostDetail.type' => 'discussion'),
-            'limit' => 4,'order'=>array('Post.created DESC')
+            'conditions' => array('PostDetail.type' => 'discussion'),
+            'limit' => 4, 'order' => array('Post.created DESC')
         );
 
         $posts = $this->paginate('Post');
 
         $this->set('posts', $posts);
-        
     }
 
     public function news() {
@@ -128,7 +131,7 @@ class HomeController extends AppController {
         //  $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home','PostDetail.type' => 'news')));
         $this->paginate = array(
             'conditions' => array('PostDetail.related_to' => 'home', 'PostDetail.type' => 'news'),
-            'limit' => 4,'order'=>array('Post.created DESC')
+            'limit' => 4, 'order' => array('Post.created DESC')
         );
 
         $posts = $this->paginate('Post');
@@ -143,7 +146,7 @@ class HomeController extends AppController {
         // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home','PostDetail.type' => 'sos')));
         $this->paginate = array(
             'conditions' => array('PostDetail.type' => 'sos'),
-            'limit' => 4,'order'=>array('Post.created DESC')
+            'limit' => 4, 'order' => array('Post.created DESC')
         );
 
         $posts = $this->paginate('Post');
@@ -168,7 +171,6 @@ class HomeController extends AppController {
         }
         $this->set('posts', $posts);
         //$this->set('type', 'sos');
-
         //$replies=$this->Reply->find('all');
         //pr($replies);
     }
@@ -178,13 +180,13 @@ class HomeController extends AppController {
         // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home','PostDetail.type' => 'advice')));
         $this->paginate = array(
             'conditions' => array('PostDetail.type' => 'expert advice'),
-            'limit' => 4,'order'=>array('Post.created DESC')
+            'limit' => 4, 'order' => array('Post.created DESC')
         );
 
         $posts = $this->paginate('Post');
 
         $this->set('posts', $posts);
-        
+
 
         $userIds = array();
         foreach ($posts as $postData) {
@@ -296,9 +298,9 @@ class HomeController extends AppController {
     public function coming_soon() {
         $this->layout = false;
     }
-    
+
     public function pink_me_ups() {
-        
+
         $this->layout = 'three-column';
         // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home','PostDetail.type' => 'advice')));
         $this->paginate = array(
@@ -330,7 +332,7 @@ class HomeController extends AppController {
             $this->set('users', $userData);
         }
     }
-    
+
     public function add_pink_me_up() {
         if (!empty($this->data)) {
             $this->Post->create();
@@ -345,7 +347,7 @@ class HomeController extends AppController {
             }
         }
     }
-    
+
     public function add_pink_me_up_reply() {
         $this->render(false);
         if (!empty($this->data)) {
@@ -353,7 +355,7 @@ class HomeController extends AppController {
             $this->redirect(array('action' => 'view_pink_me_up', $this->data['Reply']['post_id']));
         }
     }
-    
+
     public function view_pink_me_up($id) {
         $post = $this->Post->find('first', array('conditions' => array('Post.id' => $id)));
         $this->set('post', $post);
@@ -361,6 +363,7 @@ class HomeController extends AppController {
         $replies = $this->Reply->find('all', array('conditions' => array('post_id' => $id)));
         $this->set('replies', $replies);
     }
+
 }
 
 ?>

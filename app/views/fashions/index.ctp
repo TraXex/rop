@@ -89,3 +89,15 @@ foreach ($posts as $post) {
     </div>
     <?php echo $this->Paginator->next('Next>', array(), null, array('class' => 'next disabled')); ?>
 </div>
+<script>
+    $(document).ready(function(){
+     $('.subscribe').click(function(){
+         $.post("<?php echo $this->base; ?>/fashions/subscribe",
+         { data:{community:'fashions'}},
+         function(data){
+                $(".subscribe").html(data);
+            }
+     );
+     });   
+    });
+</script>

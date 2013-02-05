@@ -448,6 +448,23 @@ class FashionsController extends AppController {
             }
         }
     }
+    
+    public function subscribe(){
+        $this->layout = false;
+        $userId = $this->Authsome->get('User.id');
+
+        $communities = $this->User->find('list', array('fields' => 'communities', 'conditions' => array('User.id' => $userId)));
+        $commList = $communities[$userId];
+        $commArray = explode(",", $commList);
+        
+        array_push($commArray,$this->data['community']);
+        
+        $newList=implode(",",$commArray);
+        
+        $this->set('list',$newList);
+        $this->User->id=$userId;
+        $this->User->saveField('communities',$newList);
+    }
 }
 
 ?>
