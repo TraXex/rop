@@ -35,7 +35,7 @@
                     <li><span><?php echo $beats = count($post['Heartbeat']); ?></span></li>
                 </ul>
 
-<<<<<<< HEAD
+
             <div class="option-menu">
                 <nav class="options">
                     <ul>

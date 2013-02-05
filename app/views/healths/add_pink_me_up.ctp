@@ -1,7 +1,7 @@
 <div class="widget_804">
     <h1>Add Expert Advice</h1>
     <div class="sos_div content-div">
-        <?php echo $form->create('Health', array('action' => 'add_expert_advice')); ?>
+        <?php echo $form->create('Health', array('action' => 'add_pink_me_up')); ?>
         <div class="title">
             <h2>Title</h2>
         </div>
