@@ -188,10 +188,10 @@ class FashionsController extends AppController {
 
         $userIds = array();
         foreach ($posts as $postData) {
-            if (!empty($postData['Reply'])) {
+            if (!empty($postData['Advice'])) {
                 //print_r($postData['Reply']);
-                foreach ($postData['Reply'] as $repl) {
-                    $repUser = $repl['user_id'];
+                foreach ($postData['Advice'] as $advice) {
+                    $repUser = $advice['user_id'];
                     if (!in_array($repUser, $userIds)) {
                         $userIds[] = $repUser;
                         $userData[$repUser] = $this->User->find('first', array('conditions' => array('User.id' => $repUser)));
