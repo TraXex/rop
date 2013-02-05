@@ -39,7 +39,7 @@
                 <nav class="options">
                     <ul>
                         <li><?php echo $this->Html->image("comment-icon.png", array("alt" => "profile", 'url'=>'#CommentComment')); ?></li>
-
+                        <li><?php echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'gossips', 'action' => 'index'))); ?></li>
                         <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'gossips', 'action' => 'index'))); ?></li>
                         <li><?php echo $this->Html->image("beat-off.png",array('id'=>$post['Post']['id'],"alt" => "profile", 'class' => 'like')); ?><div class="like-back"></div>
                     </ul>
@@ -71,7 +71,34 @@
                         </div>
 
                     </div>
+                    <div class="helpful">
+                        <?php if(isset($reply['Reply']['useful'])){ ?>
+                            
+                        
+                        <ul>
+                            <li><?php
+                            if($reply['Reply']['useful']=='yes'){
+                            echo $this->Html->image("thumbs-up.jpg", array("alt" => "thumbs-up", "height" => "20"));
+                            
+                            } 
+                            else{
+                            echo $this->Html->image("thumbs-down.jpg", array("alt" => "thumbs-down", "height" => "20")); 
+                            
+                            }?></li>                            
+                        </ul>
+                       <?php }else{
+                           
+                           $id=$this->Session->read('User.User.id');
+                           $replyId=$reply['Reply']['id'];
+            if ($post['Post']['user_id'] == $id) {
+                           ?>
+                        <ul>
+                            <li><?php echo $this->Html->image("thumbs-up.jpg", array("alt" => $replyId,"class"=>'yes', "height" => "20")); ?></li>
+                            <li><?php echo $this->Html->image("thumbs-down.jpg", array("alt" =>$replyId ,"class"=>'no',"height" => "20")); ?></li>                            
+                        </ul>
+                        <?php }}?>
                 </div>
+                
 
 
                 
@@ -99,17 +126,37 @@
             var id =$(this).attr('id');
             
             var newDiv = $(this).parent().find('.like-back');
-            $.post("<?php echo $this->base; ?>/gossips/add_beat",{
-                data:{Heartbeat:{post_id:<?php echo $post['Post']['id'];?>,user_id:<?php echo $post['User']['id'];?>}}
+            $.post("<?php echo $this->base; ?>/fashions/add_beat",{
+                data:{Heartbeat:{post_id:<?php echo $post['Post']['id']; ?>,user_id:<?php echo $post['User']['id']; ?>}}
             },
             function(data){
-               $(newDiv).html(data);
+                $(newDiv).html(data);
                 console.log(data)
             }
         );       
         }
     );
     
-
+    $('.yes').click(function(){
+        var id =$(this).attr('alt');
+        $.post("<?php echo $this->base; ?>/fashions/sos_useful",{
+            data:{
+                Reply:{reply_id:id,useful:"yes"}
+            }
+        });
+        $(this).parent().siblings().children().css('display','none');
+    });
+    
+    $('.no').click(function(){
+        var id =$(this).attr('alt');
+        $.post("<?php echo $this->base; ?>/fashions/sos_useful",{
+            data:{
+                Reply:{reply_id:id,useful:"no"}
+            }
+        });
+        $(this).parent().siblings().children().css('display','none');
+    });
+    
+    
     });
 </script>

@@ -55,7 +55,7 @@ $this->Session->read('User.User.user_group_id');
                 <nav class="options">
                     <ul>
                         <li><?php echo $this->Html->image("comment-icon.png", array("alt" => "profile", 'url' => '#CommentComment')); ?></li>
-
+                        <li><?php echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'educations', 'action' => 'index'))); ?></li>
                         <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'educations', 'action' => 'index'))); ?></li>
                         <li><?php echo $this->Html->image("beat-off.png", array('id' => $post['Post']['id'], "alt" => "profile", 'class' => 'like')); ?><div class="like-back"></div>
                     </ul>

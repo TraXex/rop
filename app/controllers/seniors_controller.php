@@ -107,6 +107,69 @@ class SeniorsController extends AppController {
         $this->set('type', 'discussion');
     }
     
+    public function edit_news($id = null) {
+        $post = $this->Post->find('first', array('conditions' => array('Post.id' => $id)));
+        //pr($post);
+        $this->set('post', $post);
+        if (!empty($this->data)) {
+
+
+            $this->data['Post'] = $this->data['Senior'];
+
+            if ($this->Post->save($this->data)) {
+                $this->Session->setFlash('Your post has been updated.');
+                $this->redirect(array('action' => 'view',$this->data['Post']['id']));
+            }
+        }
+    }
+    public function edit_sos($id = null) {
+        $post = $this->Post->find('first', array('conditions' => array('Post.id' => $id)));
+        //pr($post);
+        $this->set('post', $post);
+        if (!empty($this->data)) {
+
+
+            $this->data['Post'] = $this->data['Senior'];
+
+            if ($this->Post->save($this->data)) {
+                $this->Session->setFlash('Your post has been updated.');
+                $this->redirect(array('action' => 'view_sos',$this->data['Post']['id']));
+            }
+        }
+    }
+    
+    public function edit_expert_advice($id = null) {
+        $post = $this->Post->find('first', array('conditions' => array('Post.id' => $id)));
+        //pr($post);
+        $this->set('post', $post);
+        if (!empty($this->data)) {
+
+
+            $this->data['Post'] = $this->data['Senior'];
+
+            if ($this->Post->save($this->data)) {
+                $this->Session->setFlash('Your post has been updated.');
+                $this->redirect(array('action' => 'view_advice',$this->data['Post']['id']));
+            }
+        }
+    }
+    
+    public function edit_pink_me_up($id = null) {
+        $post = $this->Post->find('first', array('conditions' => array('Post.id' => $id)));
+        //pr($post);
+        $this->set('post', $post);
+        if (!empty($this->data)) {
+
+
+            $this->data['Post'] = $this->data['Senior'];
+
+            if ($this->Post->save($this->data)) {
+                $this->Session->setFlash('Your post has been updated.');
+                $this->redirect(array('action' => 'view_pink_me_up',$this->data['Post']['id']));
+            }
+        }
+    }
+    
     public function news() {
         $this->layout = 'three-column';
       //  $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'seniors','PostDetail.type' => 'news')));

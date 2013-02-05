@@ -444,7 +444,7 @@ class FashionsController extends AppController {
 
             if ($this->Post->save($this->data)) {
                 $this->Session->setFlash('Your post has been updated.');
-                $this->redirect(array('action' => 'view_sos',$this->data['Post']['id']));
+                $this->redirect(array('action' => 'view_pink_me_up',$this->data['Post']['id']));
             }
         }
     }

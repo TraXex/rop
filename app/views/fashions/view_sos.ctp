@@ -39,7 +39,7 @@
                     <nav class="options">
                         <ul>
                             <li><?php echo $this->Html->image("comment-icon.png", array("alt" => "profile", 'url' => '#CommentComment')); ?></li>
-
+                            <li><?php echo $this->Html->image("icon-02.png", array("alt" => "view", 'class' => 'view', 'title' => $post['PostDetail']['total_views'])); ?></li>
                             <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'fashions', 'action' => 'index'))); ?></li>
                             <li><?php echo $this->Html->image("beat-off.png", array('id' => $post['Post']['id'], "alt" => "profile", 'class' => 'like')); ?><div class="like-back"></div>
                         </ul>
@@ -72,7 +72,7 @@
 
                     </div>
                     <div class="helpful">
-                        <?php if($reply['Reply']['useful']){ ?>
+                        <?php if(isset($reply['Reply']['useful'])){ ?>
                             
                         
                         <ul>

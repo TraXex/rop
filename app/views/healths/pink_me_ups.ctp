@@ -25,7 +25,7 @@ foreach ($posts as $post) {
                 </div>
             </div>
             <div class="content">
-                <p><?php echo $this->Html->link($post['Post']['topic'],array('controller'=>'healths','action'=>'view_advice',$post['Post']['id'])); ?></p>
+                <p><?php echo $this->Html->link($post['Post']['topic'],array('controller'=>'healths','action'=>'view_pink_me_up',$post['Post']['id'])); ?></p>
                 
             </div>
             <div class="comment-div">
@@ -47,23 +47,25 @@ foreach ($posts as $post) {
     } ?>
                 </ul>
                 
-                <?php echo $this->Html->link('View Advice',array('controller'=>'healths','action'=>'view_advice',$post['Post']['id'])); ?>
+                <?php echo $this->Html->link('View Advice',array('controller'=>'healths','action'=>'view_pink_me_up',$post['Post']['id'])); ?>
             </div>
             <div class="notification-div">
                 <ul class="counting">
                                         <li><span><?php echo $comments=count($post['Comment']);?></span></li>
                                         <li><span><?php echo $post['PostDetail']['total_views'];?></span></li>
-                                        <li><span><?php echo $post['PostDetail']['total_shares'];?></span></li>
+                                    <!--    <li><span><?php echo $post['PostDetail']['total_shares'];?></span></li>
                                         <li><span><?php echo $beats=count($post['Heartbeat']); ?></span></li>
+                                    -->
                                     </ul>
             <div class="option-menu">
                 <nav class="options">
                     <ul>
                         <li><?php echo $this->Html->image("comment-icon.png", array("alt" => "profile", 'url' => array('controller' => 'healths', 'action' => 'index'))); ?></li>
                         <li><?php echo $this->Html->image("icon-02.png", array("alt" => "profile", 'url' => array('controller' => 'healths', 'action' => 'index'))); ?></li>
-                        <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'healths', 'action' => 'index'))); ?></li>
+                     <!--   <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'healths', 'action' => 'index'))); ?></li>
                         <li><?php echo $this->Html->image("beat-off.png", array("alt" => "profile", 'url' => array('controller' => 'healths', 'action' => 'index'))); ?></li>
-                    </ul>
+                    -->
+                     </ul>
                 </nav>
             </div>
             </div>

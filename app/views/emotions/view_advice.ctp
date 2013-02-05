@@ -8,7 +8,7 @@ $this->Session->read('User.User.user_group_id');
     <div class="sos_div content-div">
         <div class="title">
             <h2><?php echo $post['PostDetail']['type']; ?></h2>
-            <?php// echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'emotions', 'action' => 'index'))); ?>
+            <?php // echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'emotions', 'action' => 'index'))); ?>
         </div>
         <div class="info">
             <div class="heading">
@@ -55,7 +55,7 @@ $this->Session->read('User.User.user_group_id');
                 <nav class="options">
                     <ul>
                         <li><?php echo $this->Html->image("comment-icon.png", array("alt" => "profile", 'url' => '#CommentComment')); ?></li>
-
+                        <li><?php echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'emotions', 'action' => 'index'))); ?></li>
                         <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'emotions', 'action' => 'index'))); ?></li>
                         <li><?php echo $this->Html->image("beat-off.png", array('id' => $post['Post']['id'], "alt" => "profile", 'class' => 'like')); ?><div class="like-back"></div>
                     </ul>
