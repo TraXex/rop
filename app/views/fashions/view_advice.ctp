@@ -67,7 +67,9 @@ $this->Session->read('User.User.user_group_id');
 
     
 
-<?php foreach ($comments as $comment) { ?>                       
+<?php 
+if(!empty($comments)){
+foreach ($comments as $comment) { ?>                       
         <div class="sos_div content-div">
             <div class="title">
     <?php echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'fashions', 'action' => 'index'))); ?>
@@ -97,7 +99,7 @@ $this->Session->read('User.User.user_group_id');
             </div>
         </div>
 
-    <?php }
+    <?php }}
     ?>
     <?php
     if ($this->Session->read('User.User.user_group_id') == '1') {
