@@ -25,29 +25,29 @@ foreach ($posts as $post) {
                 </div>
             </div>
             <div class="content">
-                <p><?php echo $this->Html->link($post['Post']['topic'],array('controller'=>'fashions','action'=>'view_advice',$post['Post']['id'])); ?></p>
+                <p><?php echo $this->Html->link($post['Post']['topic'],array('controller'=>'fashions','action'=>'view_pink_me_up',$post['Post']['id'])); ?></p>
                 
             </div>
             <div class="comment-div">
                 <ul>                    
                     <?php $i=0;
-                    foreach ($post['Advice'] as $advice) {
+                    foreach ($post['Reply'] as $reply) {
                         
                         if($i<2){
                         ?>
 
                         <li>
                             <?php echo $this->Html->image("center-profile-pic.jpg"); ?>
-                            <h3><?php $userId=$advice['user_id'];echo $users[$userId]['User']['username']  ?></h3>
+                            <h3><?php $userId=$reply['user_id'];echo $users[$userId]['User']['username']  ?></h3>
                             
-                            <p><?php echo $this->Text->truncate($advice['advice'], '150', array('ending' => '...', 'exact' => false)); ?>...</p>
+                            <p><?php echo $this->Text->truncate($reply['reply'], '150', array('ending' => '...', 'exact' => false)); ?>...</p>
                         </li>
     <?php }
     $i++;
     } ?>
                 </ul>
                 
-                <?php echo $this->Html->link('View Advice',array('controller'=>'fashions','action'=>'view_advice',$post['Post']['id'])); ?>
+                <?php echo $this->Html->link('View Comments',array('controller'=>'fashions','action'=>'view_pink_me_up',$post['Post']['id'])); ?>
             </div>
             <div class="notification-div">
                 <ul class="counting">
