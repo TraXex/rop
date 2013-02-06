@@ -18,9 +18,7 @@
                 echo $this->Html->link('<h2>Add Pink Me Up</h2>', array('action' => 'add_pink_me_up'), array('escape' => false));
                 break;
             default :
-                $commList = Authsome::get('User.communities');
-                $commArray = explode(",", $commList);
-                if(!in_array($this->params['controller'], $commArray))
+                if($this->params['controller']!='home')
                 echo $this->Html->link('<h2 class="subscribe">Subscribe</h2>', '#', array('escape' => false));
                 break;
         }

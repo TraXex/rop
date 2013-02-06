@@ -93,7 +93,7 @@ foreach ($posts as $post) {
     $(document).ready(function(){
      $('.subscribe').click(function(){
          $.post("<?php echo $this->base; ?>/fashions/subscribe",
-         { data:{community:'fashions'}},
+         { data:{community:'fashion'}},
          function(data){
                 $(".subscribe").html(data);
             }

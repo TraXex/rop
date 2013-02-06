@@ -19,8 +19,8 @@
         <div class="info">
             <div class="heading plain_textarea">
                 
-                <?php echo $form->input('post', array('type' => 'textarea', 'class' => 'height-233', 'div' => false, 'label' => false)); ?>
-                <?php echo $this->Form->file('image'); ?>
+                <?php echo $form->input('post', array('type' => 'textarea', 'class' => 'height-233 ckeditor', 'div' => false, 'label' => false)); ?>
+                
             </div>
         </div>
     </div>
@@ -39,3 +39,7 @@
 
 
 </div>
+<?php
+echo $this->Html->script('ckeditor/ckeditor');
+echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor.js file on the page you want to use the editor.
+?>
