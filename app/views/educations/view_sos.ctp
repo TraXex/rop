@@ -29,11 +29,12 @@
             </div>
             <div class="notification-div">
                 <ul class="counting">
-                                        <li><span><?php echo $comments=count($post['Comment']);?></span></li>
+                                        <li><span><?php echo $comments=count($post['Reply']);?></span></li>
                                         <li><span><?php echo $post['PostDetail']['total_views'];?></span></li>
-                                        <li><span><?php echo $post['PostDetail']['total_shares'];?></span></li>
+                                <!--        <li><span><?php echo $post['PostDetail']['total_shares'];?></span></li>
                                         <li><span><?php echo $beats=count($post['Heartbeat']); ?></span></li>
-                                    </ul>
+                                -->  
+                                </ul>
 
             <div class="option-menu">
                 <nav class="options">
@@ -72,7 +73,7 @@
 
                     </div>
                 <div class="helpful">
-                        <?php if(isset($reply['Reply']['useful'])){ ?>
+                        <?php if(!empty($reply['Reply']['useful'])){ ?>
                             
                         
                         <ul>

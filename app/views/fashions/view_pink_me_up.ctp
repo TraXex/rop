@@ -31,9 +31,10 @@
                 <ul class="counting">
                     <li><span><?php echo $comments = count($post['Comment']); ?></span></li>
                     <li><span><?php echo $post['PostDetail']['total_views']; ?></span></li>
-                    <li><span><?php echo $post['PostDetail']['total_shares']; ?></span></li>
+                 <!--   <li><span><?php echo $post['PostDetail']['total_shares']; ?></span></li>
                     <li><span><?php echo $beats = count($post['Heartbeat']); ?></span></li>
-                </ul>
+               -->
+                 </ul>
 
 
             <div class="option-menu">
@@ -41,8 +42,9 @@
                     <ul>
                         <li><?php echo $this->Html->image("comment-icon.png", array("alt" => "profile", 'url'=>'#CommentComment')); ?></li>
                         <li><?php echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'fashions', 'action' => 'index'))); ?></li>
-                        <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'fashions', 'action' => 'index'))); ?></li>
+                    <!--    <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'fashions', 'action' => 'index'))); ?></li>
                         <li><?php echo $this->Html->image("beat-off.png",array('id'=>$post['Post']['id'],"alt" => "profile", 'class' => 'like')); ?><div class="like-back"></div>
+                    -->
                     </ul>
                 </nav>
             </div>

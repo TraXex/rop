@@ -109,11 +109,9 @@
         
         echo $form->create('Comment', array('url' => array('controller' => 'gossips', 'action' => 'add_comment')));
         echo $form->hidden('post_id', array('value' => $post['Post']['id']));
-        echo $form->hidden('topic', array('value' => $post['Post']['topic']));
         echo $form->hidden('user_id', array('value' => $this->Session->read('User.User.id')));
-
-        echo $form->input('post', array('type' => 'textarea', 'div' => false, 'label' => false));
-
+        echo $form->hidden('type', array('value' => $post['PostDetail']['type']));
+        echo $form->input('comment', array('type' => 'textarea', 'div' => false, 'label' => false));
         echo $form->submit("Comment", array('class' => 'button', 'div' => false));
         ?>
     </div>
