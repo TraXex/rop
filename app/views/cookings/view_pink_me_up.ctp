@@ -18,7 +18,15 @@
                     </div>
                     <div class="right">
                         <p><?php echo $post['PostDetail']['related_to']; ?></p>
-                        <span>1 hour ago</span>  
+                        <span><?php 
+                        $timeTook=$this->Time->timeAgoInWords( $post['Post']['created']);
+                        $roundOff= strpos($timeTook,',');
+                        if($roundOff){
+                            echo substr( $timeTook,0,strpos($timeTook,','))." ago";
+                        }else{
+                            echo $timeTook;
+                        }
+                        ?></span> 
                     </div>
                 </div>
             </div>
@@ -29,7 +37,7 @@
             </div>
             <div class="notification-div">
                 <ul class="counting">
-                                        <li><span><?php echo $comments=count($post['Comment']);?></span></li>
+                                        <li><span><?php echo $comments=count($post['Reply']);?></span></li>
                                         <li><span><?php echo $post['PostDetail']['total_views'];?></span></li>
                                 <!--        <li><span><?php echo $post['PostDetail']['total_shares'];?></span></li>
                                         <li><span><?php echo $beats=count($post['Heartbeat']); ?></span></li>
@@ -64,19 +72,49 @@
 
                         </div>
                         <div class="right">
-                            <span>1 hour ago</span>  
+                             <span><?php 
+                        $timeTook=$this->Time->timeAgoInWords( $post['Post']['created']);
+                        $roundOff= strpos($timeTook,',');
+                        if($roundOff){
+                            echo substr( $timeTook,0,strpos($timeTook,','))." ago";
+                        }else{
+                            echo $timeTook;
+                        }
+                        ?></span>  
                         </div>
                         <div class="content">
                             <p>
                                 <?php echo $reply['Reply']['reply']; ?>
                             </p>
+                            
+
                         </div>
+                        
 
                     </div>
+                    <div class="helpful">
+                        <?php if (empty($reply['Reply']['useful'])) {
+                        
+                            
+                                    $id = $this->Session->read('User.User.id');
+                                    $replyId = $reply['Reply']['id'];
+                                    if ($post['Post']['user_id'] == $id) {
+                                        ?>
+                                <ul>
+                                    <li><?php echo $this->Html->image("thumbs-up.jpg", array("alt" => $replyId, "class" => 'yes', "height" => "20")); ?></li>
+                                    <li><?php echo $this->Html->image("thumbs-down.jpg", array("alt" => $replyId, "class" => 'no', "height" => "20")); ?></li>                            
+                                </ul>
+                            <?php }
+                        } ?>
+                    </div>
                 </div>
+                <?php
+                    if ($reply['Reply']['useful'] == 'yes') {?>
+                <div class="pink-up-button">
+                                This pinked me up
+                            </div>
+                <?php }?>
 
-
-                
             </div>
         </div>
 
@@ -101,17 +139,36 @@
             var id =$(this).attr('id');
             
             var newDiv = $(this).parent().find('.like-back');
-            $.post("<?php echo $this->base; ?>/cookings/add_beat",{
-                data:{Heartbeat:{post_id:<?php echo $post['Post']['id'];?>,user_id:<?php echo $post['User']['id'];?>}}
+            $.post("<?php echo $this->base; ?>/fashions/add_beat",{
+                data:{Heartbeat:{post_id:<?php echo $post['Post']['id']; ?>,user_id:<?php echo $post['User']['id']; ?>}}
             },
             function(data){
-               $(newDiv).html(data);
+                $(newDiv).html(data);
                 console.log(data)
             }
         );       
         }
     );
     
+    $('.yes').click(function(){
+        var id =$(this).attr('alt');
+        $.post("<?php echo $this->base; ?>/fashions/sos_useful",{
+            data:{
+                Reply:{reply_id:id,useful:"yes"}
+            }
+        });
+        $(this).parent().siblings().children().css('display','none');
+    });
+    
+    $('.no').click(function(){
+        var id =$(this).attr('alt');
+        $.post("<?php echo $this->base; ?>/fashions/sos_useful",{
+            data:{
+                Reply:{reply_id:id,useful:"no"}
+            }
+        });
+        $(this).parent().siblings().children().css('display','none');
+    });
 
     });
 </script>

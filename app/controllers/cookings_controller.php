@@ -25,6 +25,8 @@ class CookingsController extends AppController {
                 $data['PostDetail']['status'] = 'active';
                 $this->PostDetail->save($data);
             }
+           $this->redirect(array('action' => 'view', $postId));
+
         }
     }
 
@@ -52,6 +54,8 @@ class CookingsController extends AppController {
                 $data['PostDetail']['status'] = 'active';
                 $this->PostDetail->save($data);
             }
+                        $this->redirect(array('action' => 'view', $postId));
+
         }
     }
 
@@ -67,6 +71,8 @@ class CookingsController extends AppController {
                 $data['PostDetail']['status'] = 'active';
                 $this->PostDetail->save($data);
             }
+                        $this->redirect(array('action' => 'view_sos', $postId));
+
         }
     }
 
@@ -82,6 +88,8 @@ class CookingsController extends AppController {
                 $data['PostDetail']['status'] = 'active';
                 $this->PostDetail->save($data);
             }
+                        $this->redirect(array('action' => 'view_advice', $postId));
+
         }
     }
 
@@ -312,6 +320,11 @@ class CookingsController extends AppController {
     public function view_sos($id) {
         $post = $this->Post->find('first', array('conditions' => array('Post.id' => $id)));
         $this->set('post', $post);
+        
+         $views = $post['PostDetail']['total_views'] + 1;
+
+        $this->PostDetail->id = $post['PostDetail']['post_id'];
+        $this->PostDetail->saveField('total_views', $views);
 
         $replies = $this->Reply->find('all', array('conditions' => array('post_id' => $id)));
         $this->set('replies', $replies);
@@ -328,6 +341,11 @@ class CookingsController extends AppController {
     public function view_advice($id) {
         $post = $this->Post->find('first', array('conditions' => array('Post.id' => $id)));
         $this->set('post', $post);
+        
+         $views = $post['PostDetail']['total_views'] + 1;
+
+        $this->PostDetail->id = $post['PostDetail']['post_id'];
+        $this->PostDetail->saveField('total_views', $views);
 
         $advices = $this->Advice->find('all', array('conditions' => array('post_id' => $id)));
         $this->set('advices', $advices);
@@ -389,6 +407,8 @@ public function pink_me_ups() {
                 $data['PostDetail']['status'] = 'active';
                 $this->PostDetail->save($data);
             }
+                        $this->redirect(array('action' => 'view_pink_me_up', $postId));
+
         }
     }
     
@@ -403,6 +423,12 @@ public function pink_me_ups() {
     public function view_pink_me_up($id) {
         $post = $this->Post->find('first', array('conditions' => array('Post.id' => $id)));
         $this->set('post', $post);
+        
+        $views = $post['PostDetail']['total_views'] + 1;
+
+        $this->PostDetail->id = $post['PostDetail']['post_id'];
+        $this->PostDetail->saveField('total_views', $views);
+
 
         $replies = $this->Reply->find('all', array('conditions' => array('post_id' => $id)));
         $this->set('replies', $replies);

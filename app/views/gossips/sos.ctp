@@ -58,7 +58,7 @@ foreach ($posts as $post) {
             </div>
             <div class="notification-div">
                 <ul class="counting">
-                                        <li><span><?php echo $comments=count($post['Comment']);?></span></li>
+                                        <li><span><?php echo $comments=count($post['Reply']);?></span></li>
                                         <li><span><?php echo $post['PostDetail']['total_views'];?></span></li>
                                       <!--  <li><span><?php echo $post['PostDetail']['total_shares'];?></span></li>
                                         <li><span><?php echo $beats=count($post['Heartbeat']); ?></span></li>

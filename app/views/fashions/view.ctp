@@ -1,3 +1,4 @@
+<?php //pr($post); ?>
 <div class="widget_804">
     <div class="sos_div content-div">
         <div class="title">
@@ -7,7 +8,15 @@
                     <?php echo $this->Html->image("drop-down.png", array("alt" => "drop",'class'=>'extra-actions')); ?>
                     <div class="action-list">
                         <ul>
-                            <li><a href="#">Edit</a></li>
+                            <li><?php 
+                            if($post['PostDetail']['type']=='discussion'){
+                            
+                               echo $this->Html->link('edit',array('controller'=>'fashions','action'=>'edit_discussion',$post['Post']['id']));
+                            
+                            }else{
+                                echo $this->Html->link('edit',array('controller'=>'fashions','action'=>'edit_news',$post['Post']['id']));
+                            }
+                                ?></li>
                             <li><a href="#">Delete</a></li>
                             <li><a href="#">Flag Post</a></li>
                         </ul>
@@ -24,7 +33,15 @@
                     </div>
                     <div class="right">
                         <p><?php echo $post['PostDetail']['related_to']; ?></p>
-                        <span>1 hour ago</span>  
+                        <span><?php 
+                        $timeTook=$this->Time->timeAgoInWords( $post['Post']['created']);
+                        $roundOff= strpos($timeTook,',');
+                        if($roundOff){
+                            echo substr( $timeTook,0,strpos($timeTook,','))." ago";
+                        }else{
+                            echo $timeTook;
+                        }
+                        ?></span> 
                     </div>
                 </div>
             </div>
