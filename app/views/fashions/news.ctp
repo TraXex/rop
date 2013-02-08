@@ -7,7 +7,7 @@ foreach ($posts as $post) {
 
             <h2><?php echo $post['PostDetail']['type']; ?></h2>
 
-            <?php echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'fashions', 'action' => 'index'))); ?>
+            <?php // echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'fashions', 'action' => 'index'))); ?>
 
         </div>
         <div class="info">
@@ -21,7 +21,15 @@ foreach ($posts as $post) {
                     </div>
                     <div class="right">
                         <p><?php echo $post['PostDetail']['related_to']; ?></p>
-                        <span>25 min ago</span>  
+                        <span><?php 
+                        $timeTook=$this->Time->timeAgoInWords( $post['Post']['created']);
+                        $roundOff= strpos($timeTook,',');
+                        if($roundOff){
+                            echo substr( $timeTook,0,strpos($timeTook,','))." ago";
+                        }else{
+                            echo $timeTook;
+                        }
+                        ?></span>  
                     </div>
                 </div>
             </div>

@@ -6,7 +6,7 @@ foreach ($posts as $post) {
 
         <div class="title">
             <h2><?php echo $post['PostDetail']['type']; ?></h2>
-            <?php echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'fashions', 'action' => 'index'))); ?>
+            <?php // echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'fashions', 'action' => 'index'))); ?>
 
         </div>
         <div class="info">
@@ -20,7 +20,15 @@ foreach ($posts as $post) {
                     </div>
                     <div class="right">
                         <p><?php echo $post['PostDetail']['related_to']; ?></p>
-                        <span>25 min ago</span>  
+                        <span><?php 
+                        $timeTook=$this->Time->timeAgoInWords( $post['Post']['created']);
+                        $roundOff= strpos($timeTook,',');
+                        if($roundOff){
+                            echo substr( $timeTook,0,strpos($timeTook,','))." ago";
+                        }else{
+                            echo $timeTook;
+                        }
+                        ?></span> 
                     </div>
                 </div>
             </div>
@@ -50,7 +58,7 @@ foreach ($posts as $post) {
             </div>
             <div class="notification-div">
                 <ul class="counting">
-                                        <li><span><?php echo $comments=count($post['Comment']);?></span></li>
+                                        <li><span><?php echo $comments=count($post['Reply']);?></span></li>
                                         <li><span><?php echo $post['PostDetail']['total_views'];?></span></li>
                                      <!--   <li><span><?php echo $post['PostDetail']['total_shares'];?></span></li>
                                         <li><span><?php echo $beats=count($post['Heartbeat']); ?></span></li>

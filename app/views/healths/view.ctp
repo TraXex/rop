@@ -7,6 +7,24 @@
         <div class="title">
             <h2><?php echo $post['PostDetail']['type'];?></h2>
             <?php //echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'healths', 'action' => 'index'))); ?>
+            <div class="extra-actions">
+                    <?php echo $this->Html->image("drop-down.png", array("alt" => "drop",'class'=>'extra-actions')); ?>
+                    <div class="action-list">
+                        <ul>
+                            <li><?php 
+                            if($post['PostDetail']['type']=='discussion'){
+                            
+                               echo $this->Html->link('Edit',array('controller'=>'healths','action'=>'edit_discussion',$post['Post']['id']));
+                            
+                            }else{
+                                echo $this->Html->link('Edit',array('controller'=>'healths','action'=>'edit_news',$post['Post']['id']));
+                            }
+                                ?></li>
+                            <li><a href="#">Delete</a></li>
+                            <li><a href="#">Flag Post</a></li>
+                        </ul>
+                    </div>
+                </div>
         </div>
         <div class="info">
             <div class="heading">
@@ -18,7 +36,15 @@
                     </div>
                     <div class="right">
                         <p><?php echo $post['PostDetail']['related_to']; ?></p>
-                        <span>1 hour ago</span>  
+                        <span><?php 
+                        $timeTook=$this->Time->timeAgoInWords( $post['Post']['created']);
+                        $roundOff= strpos($timeTook,',');
+                        if($roundOff){
+                            echo substr( $timeTook,0,strpos($timeTook,','))." ago";
+                        }else{
+                            echo $timeTook;
+                        }
+                        ?></span>  
                     </div>
                 </div>
             </div>
