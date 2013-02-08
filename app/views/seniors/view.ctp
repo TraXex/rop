@@ -110,7 +110,15 @@
 
                             </div>
                             <div class="right">
-                                <span>1 hour ago</span>  
+                                <span><?php 
+                        $timeTook=$this->Time->timeAgoInWords( $post['Post']['created']);
+                        $roundOff= strpos($timeTook,',');
+                        if($roundOff){
+                            echo substr( $timeTook,0,strpos($timeTook,','))." ago";
+                        }else{
+                            echo $timeTook;
+                        }
+                        ?></span> 
                             </div>
                             <div class="content">
                                 <p>
@@ -142,6 +150,25 @@
         ?>
     </div>
 </div>
+<div class="hidden-elements" style="display: none;">
+    <div id="share-this">
+        <span class='st_facebook_large' displayText='Facebook'></span>
+        <span class='st_twitter_large' displayText='Tweet'></span>
+        <span class='st_linkedin_large' displayText='LinkedIn'></span>
+        <span class='st_pinterest_large' displayText='Pinterest'></span>
+        <span class='st_email_large' displayText='Email'></span>
+        <span class='st_sharethis_large' displayText='ShareThis'></span>
+        <script>
+   
+           $.getScript("http://w.sharethis.com/button/button.js",function(){
+               var switchTo5x=true;
+               stLight.options({publisher: "ur-f3b5f3ea-6a8b-185-941a-e61efe83a432", doNotHash: false, doNotCopy: false, hashAddressBar: true});    
+           });
+   
+       </script>
+    </div>
+    
+</div>
 <script>
     
     $(document).ready(function(){
@@ -165,5 +192,9 @@
             $(this).toggleClass("on");
         }
     );
+    
+    
+             $.colorbox({html:$("#share-this").clone(),'opacity':'0.15'});
+        
     });
 </script>
