@@ -1793,5 +1793,17 @@ h1.border {
 .content-div .extra-actions .action-list li:hover {border-color:#fff;background:#B92E6C;}
 .content-div .extra-actions .action-list li:hover a{color:#fff;}
 .content-div .extra-actions .action-list li a{font-family: open_sansregular, Verdana;font-size:0.691em;float: left;}
+
+.sos_div .extra-actions{display: none;visibility:hidden;}
+.sos_div:hover .extra-actions{display:block;visibility:visible;float: right;margin: 0 2% 0 0;position:relative;overflow:visible;}
+.sos_div .extra-actions .action-list{display: none;background:#FCEAF2;padding: 5px;}
+.sos_div .extra-actions:hover .action-list{display: block;position:absolute;right:0;top:100%;z-index: 20;}
+.sos_div .extra-actions .action-list ul{display: block;float:left;padding: 0;margin: 0;}
+.sos_div .extra-actions .action-list li{display: block;float:left;padding:2px 10px;width:60px;border-bottom: 1px solid #DC096E;color:#FF53A2;}
+.sos_div .extra-actions .action-list li:last-child{border-bottom: none;}
+.sos_div .extra-actions .action-list li:hover {border-color:#fff;background:#B92E6C;}
+.sos_div .extra-actions .action-list li:hover a{color:#fff;}
+.sos_div .extra-actions .action-list li a{font-family: open_sansregular, Verdana;font-size:0.691em;float: left;}
+
 #hidden-elements{display: none;}
 #share-this{padding:15px 20px 10px 20px;}

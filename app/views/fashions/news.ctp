@@ -7,7 +7,7 @@ foreach ($posts as $post) {
 
             <h2><?php echo $post['PostDetail']['type']; ?></h2>
 
-            <?php echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'fashions', 'action' => 'index'))); ?>
+            <?php // echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'fashions', 'action' => 'index'))); ?>
 
         </div>
         <div class="info">

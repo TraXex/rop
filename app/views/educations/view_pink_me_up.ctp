@@ -7,6 +7,22 @@
         <div class="title">
             <h2><?php echo $post['PostDetail']['type'];?></h2>
             <?php // echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'educations', 'action' => 'index'))); ?>
+            <div class="extra-actions">
+                    <?php echo $this->Html->image("drop-down.png", array("alt" => "drop",'class'=>'extra-actions')); ?>
+                    <div class="action-list">
+                        <ul>
+                            <li><?php 
+                            if($post['PostDetail']['type']=='pink up'){
+                            
+                               echo $this->Html->link('Edit',array('controller'=>'educations','action'=>'edit_pink_me_up',$post['Post']['id']));
+                            
+                            }
+                                ?></li>
+                            <li><a href="#">Delete</a></li>
+                            <li><a href="#">Flag Post</a></li>
+                        </ul>
+                    </div>
+                </div>
         </div>
         <div class="info">
             <div class="heading">

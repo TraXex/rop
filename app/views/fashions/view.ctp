@@ -11,10 +11,10 @@
                             <li><?php 
                             if($post['PostDetail']['type']=='discussion'){
                             
-                               echo $this->Html->link('edit',array('controller'=>'fashions','action'=>'edit_discussion',$post['Post']['id']));
+                               echo $this->Html->link('Edit',array('controller'=>'fashions','action'=>'edit_discussion',$post['Post']['id']));
                             
                             }else{
-                                echo $this->Html->link('edit',array('controller'=>'fashions','action'=>'edit_news',$post['Post']['id']));
+                                echo $this->Html->link('Edit',array('controller'=>'fashions','action'=>'edit_news',$post['Post']['id']));
                             }
                                 ?></li>
                             <li><a href="#">Delete</a></li>
