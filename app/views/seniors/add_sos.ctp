@@ -12,12 +12,12 @@ echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor
         </div>
         <div class="info">
             <div class="heading plain_textarea">
-                <?php echo $form->input('topic', array('class' => 'height-40', 'type' => 'textarea', 'label' => false, 'div' => false)); ?>
+                <?php echo $form->input('topic', array('class' => 'height-40','id' => 'ckeditor', 'type' => 'textarea', 'label' => false, 'div' => false)); ?>
             </div>
         </div>
     </div>
 
-    <div class="sos_div content-div">
+  <!--  <div class="sos_div content-div">
         <div class="title">
             <h2>Content</h2>
         </div>
@@ -28,6 +28,7 @@ echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor
             </div>
         </div>
     </div>
+  -->
     <div class="gray-buttons">
         <?php
         echo $form->hidden('user_id', array('value' => $this->Session->read('User.User.id'), 'type' => 'textarea'));
