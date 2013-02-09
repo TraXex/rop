@@ -35,10 +35,10 @@ foreach ($posts as $post) {
             <div class="content">
                 <h4><?php
                 if ($post['PostDetail']['type'] == 'sos') {
-                    echo $this->Html->link($post['Post']['topic'], array('controller' => 'emotions', 'action' => 'view_sos', $post['Post']['id']));
+                    echo $this->Html->link($post['Post']['topic'], array('controller' => 'emotions', 'action' => 'view_sos', $post['Post']['id']), array('escape' => false));
                 } 
                 elseif ($post['PostDetail']['type'] == 'expert advice') {
-                    echo $this->Html->link($post['Post']['topic'], array('controller' => 'emotions', 'action' => 'view_advice', $post['Post']['id']));
+                    echo $this->Html->link($post['Post']['topic'], array('controller' => 'emotions', 'action' => 'view_advice', $post['Post']['id']), array('escape' => false));
                 }
                 else{
                     echo $this->Html->link($post['Post']['topic'], array('controller' => 'emotions', 'action' => 'view', $post['Post']['id']));

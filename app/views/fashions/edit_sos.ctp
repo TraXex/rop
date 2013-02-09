@@ -1,5 +1,5 @@
 <div class="widget_804">
-    <h1>Add Discussion</h1>
+    <h1>Edit SOS</h1>
     <div class="sos_div content-div">
         <div class="title">
             <h2>Title</h2>

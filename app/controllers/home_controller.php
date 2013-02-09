@@ -115,42 +115,54 @@ class HomeController extends AppController {
 
     public function discussions() {
         $this->layout = 'three-column';
-        // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home','PostDetail.type' => 'discussion')));
+//        $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home')));
+        $userId = $this->Authsome->get('User.id');
+
+        $communities = $this->User->find('list', array('fields' => 'communities', 'conditions' => array('User.id' => $userId)));
+        $commList = $communities[$userId];
+        $commArray = explode(",", $commList);
         $this->paginate = array(
-            'conditions' => array('PostDetail.type' => 'discussion'),
-            'limit' => 4, 'order' => array('Post.created DESC')
+            'conditions' => array('PostDetail.related_to' => $commArray,'PostDetail.type'=>'discussion'),
+            'limit' => 5, 'order' => array('Post.created DESC')
         );
-
         $posts = $this->paginate('Post');
-
+        //pr($posts);
         $this->set('posts', $posts);
     }
 
     public function news() {
-        $this->layout = 'three-column';
-        //  $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home','PostDetail.type' => 'news')));
+       $this->layout = 'three-column';
+//        $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home')));
+        $userId = $this->Authsome->get('User.id');
+
+        $communities = $this->User->find('list', array('fields' => 'communities', 'conditions' => array('User.id' => $userId)));
+        $commList = $communities[$userId];
+        $commArray = explode(",", $commList);
         $this->paginate = array(
-            'conditions' => array('PostDetail.related_to' => 'home', 'PostDetail.type' => 'news'),
-            'limit' => 4, 'order' => array('Post.created DESC')
+            'conditions' => array('PostDetail.related_to' => $commArray,'PostDetail.type'=>'news'),
+            'limit' => 5, 'order' => array('Post.created DESC')
         );
-
         $posts = $this->paginate('Post');
-
+        //pr($posts);
         $this->set('posts', $posts);
-        //$this->set('type', 'news');
     }
 
     public function SOS() {
 
         $this->layout = 'three-column';
-        // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home','PostDetail.type' => 'sos')));
-        $this->paginate = array(
-            'conditions' => array('PostDetail.type' => 'sos'),
-            'limit' => 4, 'order' => array('Post.created DESC')
-        );
+//        $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home')));
+        $userId = $this->Authsome->get('User.id');
 
+        $communities = $this->User->find('list', array('fields' => 'communities', 'conditions' => array('User.id' => $userId)));
+        $commList = $communities[$userId];
+        $commArray = explode(",", $commList);
+        $this->paginate = array(
+            'conditions' => array('PostDetail.related_to' => $commArray,'PostDetail.type'=>'sos'),
+            'limit' => 5, 'order' => array('Post.created DESC')
+        );
         $posts = $this->paginate('Post');
         //pr($posts);
+        
         $userIds = array();
         foreach ($posts as $postData) {
             if (!empty($postData['Reply'])) {
@@ -177,14 +189,18 @@ class HomeController extends AppController {
 
     public function expert_advice() {
         $this->layout = 'three-column';
-        // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home','PostDetail.type' => 'advice')));
+//        $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home')));
+        $userId = $this->Authsome->get('User.id');
+
+        $communities = $this->User->find('list', array('fields' => 'communities', 'conditions' => array('User.id' => $userId)));
+        $commList = $communities[$userId];
+        $commArray = explode(",", $commList);
         $this->paginate = array(
-            'conditions' => array('PostDetail.type' => 'expert advice'),
-            'limit' => 4, 'order' => array('Post.created DESC')
+            'conditions' => array('PostDetail.related_to' => $commArray,'PostDetail.type'=>'expert advice'),
+            'limit' => 5, 'order' => array('Post.created DESC')
         );
-
         $posts = $this->paginate('Post');
-
+        //pr($posts);
         $this->set('posts', $posts);
 
 
@@ -302,16 +318,19 @@ class HomeController extends AppController {
     public function pink_me_ups() {
 
         $this->layout = 'three-column';
-        // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home','PostDetail.type' => 'advice')));
+//        $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'home')));
+        $userId = $this->Authsome->get('User.id');
+
+        $communities = $this->User->find('list', array('fields' => 'communities', 'conditions' => array('User.id' => $userId)));
+        $commList = $communities[$userId];
+        $commArray = explode(",", $commList);
         $this->paginate = array(
-            'conditions' => array('PostDetail.related_to' => 'home', 'PostDetail.type' => 'pink up'),
-            'limit' => 4
+            'conditions' => array('PostDetail.related_to' => $commArray,'PostDetail.type'=>'pink up'),
+            'limit' => 5, 'order' => array('Post.created DESC')
         );
-
         $posts = $this->paginate('Post');
-
+        //pr($posts);
         $this->set('posts', $posts);
-        //$this->set('type', 'pinkup');
 
         $userIds = array();
         foreach ($posts as $postData) {

@@ -33,7 +33,7 @@ foreach ($posts as $post) {
                 </div>
             </div>
             <div class="content">
-                <p><?php echo $this->Html->link($post['Post']['topic'],array('controller'=>'seniors','action'=>'view_pink_me_up',$post['Post']['id'])); ?></p>
+                <p><?php echo $this->Html->link($post['Post']['topic'],array('controller'=>'seniors','action'=>'view_pink_me_up',$post['Post']['id']), array('escape' => false)); ?></p>
                 
             </div>
             <div class="comment-div">
