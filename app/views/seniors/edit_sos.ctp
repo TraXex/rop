@@ -8,7 +8,7 @@
             <div class="heading plain_textarea">
                 <?php
                 
-                    echo $form->create('Senior', array('action' => 'edit_discussion'));
+                    echo $form->create('Senior', array('action' => 'edit_sos'));
                     echo $form->hidden('id', array('value' => $post['Post']['id'], 'type' => 'textarea', 'rows' => '1'));
                     echo $form->input('topic', array('class' => 'height-40', 'div' => false, 'label' => false, 'value' => $post['Post']['topic'], 'type' => 'textarea', 'rows' => '1'));
                     ?>
