@@ -78,7 +78,7 @@ foreach ($posts as $post) {
                                 echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'fashions', 'action' => 'view_sos', $post['Post']['id']))); 
                         }elseif ($post['PostDetail']['type']== 'expert advice'){
                                 echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'fashions', 'action' => 'view_advice', $post['Post']['id']))); 
-                        }elseif ($post['PostDetail']['type']== 'expert advice'){
+                        }elseif ($post['PostDetail']['type']== 'pink up'){
                                 echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'fashions', 'action' => 'view_pink_me_up', $post['Post']['id']))); 
                         }else{
                             echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'fashions', 'action' => 'view', $post['Post']['id']))); 
