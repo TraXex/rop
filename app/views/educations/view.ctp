@@ -196,7 +196,9 @@
     );
     
     
+        $('.share').click(function(){
              $.colorbox({html:$("#share-this").clone(),'opacity':'0.15'});
-        
+        });
     });
 </script>
+

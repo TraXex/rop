@@ -38,7 +38,10 @@ foreach ($posts as $post) {
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'educations', 'action' => 'view_sos', $post['Post']['id']));
             } elseif ($post['PostDetail']['type'] == 'expert advice') {
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'educations', 'action' => 'view_advice', $post['Post']['id']));
-            } else {
+            } elseif ($post['PostDetail']['type'] == 'pink up') {
+                echo $this->Html->link($post['Post']['topic'], array('controller' => 'educations', 'action' => 'view_pink_me_up', $post['Post']['id']));
+            }
+            else {
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'educations', 'action' => 'view', $post['Post']['id']));
             }
                 ?></h4>
@@ -61,7 +64,10 @@ foreach ($posts as $post) {
                 echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'educations', 'action' => 'view_sos', $post['Post']['id'])));
             } elseif ($post['PostDetail']['type'] == 'expert advice') {
                 echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'educations', 'action' => 'view_advice', $post['Post']['id'])));
-            } else {
+            }elseif ($post['PostDetail']['type'] == 'pink up') {
+                echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'educations', 'action' => 'view_pink_me_up', $post['Post']['id'])));
+            }
+            else {
                 echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'educations', 'action' => 'view', $post['Post']['id'])));
             }
                         
