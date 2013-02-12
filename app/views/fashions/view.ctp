@@ -154,6 +154,14 @@
         <span class='st_pinterest_large' displayText='Pinterest'></span>
         <span class='st_email_large' displayText='Email'></span>
         <span class='st_sharethis_large' displayText='ShareThis'></span>
+        <script>
+   
+           $.getScript("http://w.sharethis.com/button/button.js",function(){
+               var switchTo5x=true;
+               stLight.options({publisher: "ur-f3b5f3ea-6a8b-185-941a-e61efe83a432", doNotHash: false, doNotCopy: false, hashAddressBar: true});    
+           });
+   
+       </script>
     </div>
     
 </div>
@@ -182,8 +190,7 @@
     );
     
     
-        $('.share').click(function(){
              $.colorbox({html:$("#share-this").clone(),'opacity':'0.15'});
-        });
+        
     });
 </script>
