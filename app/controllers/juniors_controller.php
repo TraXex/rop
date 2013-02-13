@@ -104,9 +104,9 @@ class JuniorsController extends AppController {
 
     public function discussions() {
         $this->layout = 'three-column';
-       // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'junior','PostDetail.type' => 'discussion')));
+      //  $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'seniors','PostDetail.type' => 'discussion')));
         $this->paginate = array(
-        'conditions' => array('PostDetail.related_to' => 'junior','PostDetail.type' => 'discussion'),
+        'conditions' => array('PostDetail.related_to' => 'juniors','PostDetail.type' => 'discussion'),
             'limit' =>4,'order'=>array('Post.created DESC')
             );
         

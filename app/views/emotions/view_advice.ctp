@@ -108,7 +108,7 @@ $this->Session->read('User.User.user_group_id');
                         </div>
                         <div class="right">
                             <span><?php 
-                        $timeTook=$this->Time->timeAgoInWords( $post['Post']['created']);
+                        $timeTook=$this->Time->timeAgoInWords($comment['Comment']['created']);
                         $roundOff= strpos($timeTook,',');
                         if($roundOff){
                             echo substr( $timeTook,0,strpos($timeTook,','))." ago";

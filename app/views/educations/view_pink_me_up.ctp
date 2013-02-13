@@ -89,7 +89,7 @@
                         </div>
                         <div class="right">
                              <span><?php 
-                        $timeTook=$this->Time->timeAgoInWords( $post['Post']['created']);
+                        $timeTook=$this->Time->timeAgoInWords( $reply['Reply']['created']);
                         $roundOff= strpos($timeTook,',');
                         if($roundOff){
                             echo substr( $timeTook,0,strpos($timeTook,','))." ago";

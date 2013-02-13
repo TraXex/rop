@@ -35,15 +35,16 @@ foreach ($posts as $post) {
             <div class="content">
                 <h4><?php
                 if ($post['PostDetail']['type'] == 'sos') {
-                    echo $this->Html->link($post['Post']['topic'], array('controller' => 'gossips', 'action' => 'view_sos', $post['Post']['id']), array('escape' => false));
-                } 
-                elseif ($post['PostDetail']['type'] == 'expert advice') 
-                    echo $this->Html->link($post['Post']['topic'], array('controller' => 'gossips', 'action' => 'view_advice', $post['Post']['id']));
-                }elseif ($post['PostDetail']['type'] == 'pink up') {
+                echo $this->Html->link($post['Post']['topic'], array('controller' => 'gossips', 'action' => 'view_sos', $post['Post']['id']), array('escape' => false));
+            } elseif ($post['PostDetail']['type'] == 'expert advice') {
+
+                echo $this->Html->link($post['Post']['topic'], array('controller' => 'gossips', 'action' => 'view_advice', $post['Post']['id']));
+            }elseif ($post['PostDetail']['type'] == 'pink up') {
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'gossips', 'action' => 'view_pink_me_up', $post['Post']['id']));
-            }   else{
-                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'gossips', 'action' => 'view', $post['Post']['id']));   
-                }
+            } else {
+
+                echo $this->Html->link($post['Post']['topic'], array('controller' => 'gossips', 'action' => 'view', $post['Post']['id']));
+            }
                 
                  ?></h4>
                     <p><?php echo $this->Text->truncate($post['Post']['post'], '150', array('ending' => '...', 'exact' => false)); ?>...</p>

@@ -37,17 +37,15 @@ foreach ($posts as $post) {
             if ($post['PostDetail']['type'] == 'sos') {
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'cookings', 'action' => 'view_sos', $post['Post']['id']), array('escape' => false));
             } elseif ($post['PostDetail']['type'] == 'expert advice') {
-<<<<<<< HEAD
+
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'cookings', 'action' => 'view_advice', $post['Post']['id']));
             }
             elseif ($post['PostDetail']['type'] == 'pink up') {
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'cookings', 'action' => 'view_pink_me_up', $post['Post']['id']));
             }
             else {
-=======
-                echo $this->Html->link($post['Post']['topic'], array('controller' => 'cookings', 'action' => 'view_advice', $post['Post']['id']), array('escape' => false));
-            } else {
->>>>>>> 91344effea0d6276a7f73b9e5440104ce3b3011c
+
+               
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'cookings', 'action' => 'view', $post['Post']['id']));
             }
                 ?></h4>
