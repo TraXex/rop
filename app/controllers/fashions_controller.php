@@ -46,14 +46,8 @@ class FashionsController extends AppController {
 
     public function add_news() {
         if (!empty($this->data)) {
-            //pr($this->data);
-            $fileOK = $this->uploadFiles('img/news', $this->data['Fashion']);
-            // if file was uploaded ok
-            if (array_key_exists('urls', $fileOK)) {
-                // save the url in the form data
-                $this->data['Fashion']['image_url'] = $fileOK['urls'][0];
-            }
-            pr($fileOK);
+            
+            
             $this->Post->create();
             $this->data['Post'] = $this->data['Fashion'];
             if ($this->Post->save($this->data)) {

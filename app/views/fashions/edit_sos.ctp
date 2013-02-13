@@ -3,7 +3,7 @@ echo $this->Html->script('ckeditor/ckeditor');
 echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor.js file on the page you want to use the editor.
 ?>
 <div class="widget_804">
-    <h1>Add Discussion</h1>
+    <h1>Edit SOS</h1>
     <div class="sos_div content-div">
         <div class="title">
             <h2>Title</h2>

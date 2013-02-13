@@ -196,8 +196,13 @@
     );
     
     
+<<<<<<< HEAD
              $.colorbox({html:$("#share-this").clone(),'opacity':'0.15'});
        
+=======
+             $(".share").colorbox({inline:true,opacity:'0.15'});    
+        
+>>>>>>> 91344effea0d6276a7f73b9e5440104ce3b3011c
     });
 </script>
 

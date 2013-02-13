@@ -1,27 +1,26 @@
-<?php //pr($post); ?>
+<?php //pr($post);   ?>
 <div class="widget_804">
     <div class="sos_div content-div">
         <div class="title">
             <h2><?php echo $post['PostDetail']['type']; ?></h2>
-            
-                <div class="extra-actions">
-                    <?php echo $this->Html->image("drop-down.png", array("alt" => "drop",'class'=>'extra-actions')); ?>
-                    <div class="action-list">
-                        <ul>
-                            <li><?php 
-                            if($post['PostDetail']['type']=='discussion'){
-                            
-                               echo $this->Html->link('Edit',array('controller'=>'fashions','action'=>'edit_discussion',$post['Post']['id']));
-                            
-                            }else{
-                                echo $this->Html->link('Edit',array('controller'=>'fashions','action'=>'edit_news',$post['Post']['id']));
-                            }
-                                ?></li>
-                            <li><a href="#">Delete</a></li>
-                            <li><a href="#">Flag Post</a></li>
-                        </ul>
-                    </div>
+
+            <div class="extra-actions">
+                <?php echo $this->Html->image("drop-down.png", array("alt" => "drop", 'class' => 'extra-actions')); ?>
+                <div class="action-list">
+                    <ul>
+                        <li><?php
+                if ($post['PostDetail']['type'] == 'discussion') {
+
+                    echo $this->Html->link('Edit', array('controller' => 'fashions', 'action' => 'edit_discussion', $post['Post']['id']));
+                } else {
+                    echo $this->Html->link('Edit', array('controller' => 'fashions', 'action' => 'edit_news', $post['Post']['id']));
+                }
+                ?></li>
+                        <li><a href="#">Delete</a></li>
+                        <li><a href="#">Flag Post</a></li>
+                    </ul>
                 </div>
+            </div>
         </div>
         <div class="info">
             <div class="heading">
@@ -33,15 +32,15 @@
                     </div>
                     <div class="right">
                         <p><?php echo $post['PostDetail']['related_to']; ?></p>
-                        <span><?php 
-                        $timeTook=$this->Time->timeAgoInWords( $post['Post']['created']);
-                        $roundOff= strpos($timeTook,',');
-                        if($roundOff){
-                            echo substr( $timeTook,0,strpos($timeTook,','))." ago";
-                        }else{
-                            echo $timeTook;
-                        }
-                        ?></span> 
+                        <span><?php
+                $timeTook = $this->Time->timeAgoInWords($post['Post']['created']);
+                $roundOff = strpos($timeTook, ',');
+                if ($roundOff) {
+                    echo substr($timeTook, 0, strpos($timeTook, ',')) . " ago";
+                } else {
+                    echo $timeTook;
+                }
+                ?></span> 
                     </div>
                 </div>
             </div>
@@ -63,26 +62,26 @@
                         <ul>
                             <li><?php echo $this->Html->image("comment-icon.png", array("alt" => "comments", 'url' => '#CommentComment')); ?></li>
                             <li><?php echo $this->Html->image("icon-02.png", array("alt" => "view", 'class' => 'view', 'title' => $post['PostDetail']['total_views'])); ?></li>
-                            <li><a href="#" class="share"><?php echo $this->Html->image("share-icon.png", array("alt" => "share")); ?></a></li>
+                            <li><a href="#share-this" class="share"><?php echo $this->Html->image("share-icon.png", array("alt" => "share")); ?></a></li>
                             <li><?php
-                $beats = $post['Heartbeat'];
+                            $beats = $post['Heartbeat'];
 
-                function beat_check($beats, $userId) {
-                    foreach ($beats as $key => $beat) {
-                        if ($beat['user_id'] == $userId)
-                            return $userId;
-                    }
-                    return false;
-                }
+                            function beat_check($beats, $userId) {
+                                foreach ($beats as $key => $beat) {
+                                    if ($beat['user_id'] == $userId)
+                                        return $userId;
+                                }
+                                return false;
+                            }
 
-                $userBeat = beat_check($beats, $this->Session->read('User.User.id'));
+                            $userBeat = beat_check($beats, $this->Session->read('User.User.id'));
 
 
-                if ($userBeat) {
-                    echo $this->Html->image("beat-on.png", array('id' => $post['Post']['id'], "alt" => "profile", 'title' => $beats, 'class' => 'like target image-swap on'));
-                } else {
-                    echo $this->Html->image("beat-off.png", array('id' => $post['Post']['id'], "alt" => "profile", 'title' => $beats, 'class' => 'like target image-swap'));
-                }
+                            if ($userBeat) {
+                                echo $this->Html->image("beat-on.png", array('id' => $post['Post']['id'], "alt" => "profile", 'title' => $beats, 'class' => 'like target image-swap on'));
+                            } else {
+                                echo $this->Html->image("beat-off.png", array('id' => $post['Post']['id'], "alt" => "profile", 'title' => $beats, 'class' => 'like target image-swap'));
+                            }
                 ?></li><div class="like-back"></div>
                         </ul>
                     </nav>
@@ -131,7 +130,7 @@
                 </div>
             </div>
 
-        <?php
+            <?php
         }
     }
     ?>
@@ -146,7 +145,7 @@
         ?>
     </div>
 </div>
-<div class="hidden-elements" style="display: none;">
+<div class="hidden-elements" style="display: none">
     <div id="share-this">
         <span class='st_facebook_large' displayText='Facebook'></span>
         <span class='st_twitter_large' displayText='Tweet'></span>
@@ -155,6 +154,7 @@
         <span class='st_email_large' displayText='Email'></span>
         <span class='st_sharethis_large' displayText='ShareThis'></span>
         <script>
+<<<<<<< HEAD
    
            $.getScript("http://w.sharethis.com/button/button.js",function(){
                var switchTo5x=true;
@@ -163,7 +163,17 @@
    
        </script>
     </div>
+=======
     
+            $.getScript("http://w.sharethis.com/button/button.js",function(){
+                var switchTo5x=true;
+                stLight.options({publisher: "ur-f3b5f3ea-6a8b-185-941a-e61efe83a432", doNotHash: false, doNotCopy: false, hashAddressBar: true});    
+            });
+>>>>>>> 91344effea0d6276a7f73b9e5440104ce3b3011c
+    
+        </script>
+    </div>
+
 </div>
 <script>
     
@@ -189,8 +199,14 @@
         }
     );
     
+<<<<<<< HEAD
     
              $.colorbox({html:$("#share-this").clone(),'opacity':'0.15'});
         
+=======
+        
+        
+        $(".share").colorbox({inline:true,opacity:'0.15'});    
+>>>>>>> 91344effea0d6276a7f73b9e5440104ce3b3011c
     });
 </script>

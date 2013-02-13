@@ -195,7 +195,7 @@
     );
     
     
-             $.colorbox({html:$("#share-this").clone(),'opacity':'0.15'});
+             $(".share").colorbox({inline:true,opacity:'0.15'});    
         
     });
 </script>
