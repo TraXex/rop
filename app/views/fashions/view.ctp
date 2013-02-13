@@ -154,11 +154,22 @@
         <span class='st_email_large' displayText='Email'></span>
         <span class='st_sharethis_large' displayText='ShareThis'></span>
         <script>
+<<<<<<< HEAD
+   
+           $.getScript("http://w.sharethis.com/button/button.js",function(){
+               var switchTo5x=true;
+               stLight.options({publisher: "ur-f3b5f3ea-6a8b-185-941a-e61efe83a432", doNotHash: false, doNotCopy: false, hashAddressBar: true});    
+           });
+   
+       </script>
+    </div>
+=======
     
             $.getScript("http://w.sharethis.com/button/button.js",function(){
                 var switchTo5x=true;
                 stLight.options({publisher: "ur-f3b5f3ea-6a8b-185-941a-e61efe83a432", doNotHash: false, doNotCopy: false, hashAddressBar: true});    
             });
+>>>>>>> 91344effea0d6276a7f73b9e5440104ce3b3011c
     
         </script>
     </div>
@@ -188,8 +199,14 @@
         }
     );
     
+<<<<<<< HEAD
+    
+             $.colorbox({html:$("#share-this").clone(),'opacity':'0.15'});
+        
+=======
         
         
         $(".share").colorbox({inline:true,opacity:'0.15'});    
+>>>>>>> 91344effea0d6276a7f73b9e5440104ce3b3011c
     });
 </script>

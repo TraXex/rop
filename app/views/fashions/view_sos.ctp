@@ -88,7 +88,8 @@
 
                         </div>
                         <div class="right">
-                            <span><?php 
+                            <span>
+                                <?php 
                         $timeTook=$this->Time->timeAgoInWords( $post['Post']['created']);
                         $roundOff= strpos($timeTook,',');
                         if($roundOff){
@@ -96,7 +97,8 @@
                         }else{
                             echo $timeTook;
                         }
-                        ?></span> 
+                        ?>
+                            </span> 
                         </div>
                         <div class="content">
                             <p>

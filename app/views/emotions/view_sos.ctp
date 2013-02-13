@@ -7,6 +7,22 @@
         <div class="title">
             <h2><?php echo $post['PostDetail']['type'];?></h2>
             <?php // echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'emotions', 'action' => 'index'))); ?>
+            <div class="extra-actions">
+                    <?php echo $this->Html->image("drop-down.png", array("alt" => "drop",'class'=>'extra-actions')); ?>
+                    <div class="action-list">
+                        <ul>
+                            <li><?php 
+                            if($post['PostDetail']['type']=='sos'){
+                            
+                               echo $this->Html->link('Edit',array('controller'=>'emotions','action'=>'edit_sos',$post['Post']['id']));
+                            
+                            }
+                                ?></li>
+                            <li><a href="#">Delete</a></li>
+                            <li><a href="#">Flag Post</a></li>
+                        </ul>
+                    </div>
+                </div>
         </div>
         <div class="info">
             <div class="heading">
@@ -49,9 +65,10 @@
                     <ul>
                         <li><?php echo $this->Html->image("comment-icon.png", array("alt" => "profile", 'url'=>'#CommentComment')); ?></li>
                         <li><?php echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'emotions', 'action' => 'index'))); ?></li>
-                        <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'emotions', 'action' => 'index'))); ?></li>
+                     <!--   <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'emotions', 'action' => 'index'))); ?></li>
                         <li><?php echo $this->Html->image("beat-off.png",array('id'=>$post['Post']['id'],"alt" => "profile", 'class' => 'like')); ?><div class="like-back"></div>
-                    </ul>
+                    -->
+                     </ul>
                 </nav>
             </div>
             </div>

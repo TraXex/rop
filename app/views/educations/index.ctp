@@ -37,8 +37,16 @@ foreach ($posts as $post) {
             if ($post['PostDetail']['type'] == 'sos') {
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'educations', 'action' => 'view_sos', $post['Post']['id']), array('escape' => false));
             } elseif ($post['PostDetail']['type'] == 'expert advice') {
+<<<<<<< HEAD
+                echo $this->Html->link($post['Post']['topic'], array('controller' => 'educations', 'action' => 'view_advice', $post['Post']['id']));
+            } elseif ($post['PostDetail']['type'] == 'pink up') {
+                echo $this->Html->link($post['Post']['topic'], array('controller' => 'educations', 'action' => 'view_pink_me_up', $post['Post']['id']));
+            }
+            else {
+=======
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'educations', 'action' => 'view_advice', $post['Post']['id']), array('escape' => false));
             } else {
+>>>>>>> 91344effea0d6276a7f73b9e5440104ce3b3011c
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'educations', 'action' => 'view', $post['Post']['id']));
             }
                 ?></h4>
@@ -61,13 +69,26 @@ foreach ($posts as $post) {
                 echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'educations', 'action' => 'view_sos', $post['Post']['id'])));
             } elseif ($post['PostDetail']['type'] == 'expert advice') {
                 echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'educations', 'action' => 'view_advice', $post['Post']['id'])));
-            } else {
+            }elseif ($post['PostDetail']['type'] == 'pink up') {
+                echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'educations', 'action' => 'view_pink_me_up', $post['Post']['id'])));
+            }
+            else {
                 echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'educations', 'action' => 'view', $post['Post']['id'])));
             }
                         
                         
              ?></li>
-                        <li><?php echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'educations', 'action' => 'index'))); ?></li>
+                        <li><?php
+                        if ($post['PostDetail']['type']== 'sos'){
+                                echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'educations', 'action' => 'view_sos', $post['Post']['id']))); 
+                        }elseif ($post['PostDetail']['type']== 'expert advice'){
+                                echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'educations', 'action' => 'view_advice', $post['Post']['id']))); 
+                        }elseif ($post['PostDetail']['type']== 'pink up'){
+                                echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'educations', 'action' => 'view_pink_me_up', $post['Post']['id']))); 
+                        }else{
+                            echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'educations', 'action' => 'view', $post['Post']['id']))); 
+                        }
+                            ?></li>
                         <li><?php echo $this->Html->image("share-icon.png", array("alt" => "share-icon", 'url' => array('controller' => 'educations', 'action' => 'index'))); ?></li>
                         <li><?php $beats=count($post['Heartbeat']); echo $this->Html->image("beat-off.png", array('id' => $post['Post']['id'], "alt" => "beat-icon",'title'=>$beats, 'class' => 'like target'));?><div class="like-back"></div></li>
                     

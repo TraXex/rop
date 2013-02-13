@@ -1,5 +1,13 @@
+<?php
+echo $this->Html->script('ckeditor/ckeditor');
+echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor.js file on the page you want to use the editor.
+?>
 <div class="widget_804">
+<<<<<<< HEAD
+    <h1>Edit Pink Me Up</h1>
+=======
     <h1>Edit Pink Me up</h1>
+>>>>>>> 91344effea0d6276a7f73b9e5440104ce3b3011c
     <div class="sos_div content-div">
         <div class="title">
             <h2>Title</h2>
@@ -8,9 +16,9 @@
             <div class="heading plain_textarea">
                 <?php
                 
-                    echo $form->create('Fashion', array('action' => 'edit_discussion'));
+                    echo $form->create('Fashion', array('action' => 'edit_pink_me_up'));
                     echo $form->hidden('id', array('value' => $post['Post']['id'], 'type' => 'textarea', 'rows' => '1'));
-                    echo $form->input('topic', array('class' => 'height-40', 'div' => false, 'label' => false, 'value' => $post['Post']['topic'], 'type' => 'textarea', 'rows' => '1'));
+                    echo $form->input('topic', array('class' => 'height-40','id' => 'ckeditor', 'div' => false, 'label' => false, 'value' => $post['Post']['topic'], 'type' => 'textarea', 'rows' => '1'));
                     ?>
                 </div>
             </div>
@@ -19,7 +27,7 @@
 
 
 
-        <div class="sos_div content-div">
+  <!--      <div class="sos_div content-div">
             <div class="title">
                 <h2>Content</h2>
             </div>
@@ -32,6 +40,7 @@
                 </div>
             </div>
         </div>
+-->
         <div class="gray-buttons">
             <?php
             echo $form->end(array('value' => 'create', 'class' => 'button', 'div' => false));
@@ -44,3 +53,7 @@
 
         
 </div>
+<script>
+CKEDITOR.replace( 'ckeditor',{
+    toolbar:'MyToolbar'} );
+</script>
