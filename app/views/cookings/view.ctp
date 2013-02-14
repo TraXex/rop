@@ -8,7 +8,13 @@
             <h2><?php echo $post['PostDetail']['type'];?></h2>
             <?php // echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'cookings', 'action' => 'index'))); ?>
             <div class="extra-actions">
-                    <?php echo $this->Html->image("drop-down.png", array("alt" => "drop",'class'=>'extra-actions')); ?>
+                    <?php
+            $id=$this->Session->read('User.User.id');
+            if ($post['Post']['user_id'] == $id) {
+                
+                echo $this->Html->image("drop-down.png", array("alt" => "drop",'class'=>'drop-down' ,'url' =>"#"));
+            
+            ?>
                     <div class="action-list">
                         <ul>
                             <li><?php 
@@ -20,10 +26,10 @@
                                 echo $this->Html->link('Edit',array('controller'=>'cookings','action'=>'edit_news',$post['Post']['id']));
                             }
                                 ?></li>
-                            <li><a href="#">Delete</a></li>
+                            <li><?php echo $this->Html->link('Delete',array('controller'=>'cookings','action'=>'delete',$post['Post']['id'])); ?></li>
                             <li><a href="#">Flag Post</a></li>
                         </ul>
-                    </div>
+                    </div><?php } ?>
                 </div>
         </div>
         <div class="info">
@@ -150,7 +156,7 @@
         ?>
     </div>
  </div>
-<div class="hidden-elements" style="display: none;">
+<div class="hidden-elements" style="display: none">
     <div id="share-this">
         <span class='st_facebook_large' displayText='Facebook'></span>
         <span class='st_twitter_large' displayText='Tweet'></span>
@@ -159,16 +165,17 @@
         <span class='st_email_large' displayText='Email'></span>
         <span class='st_sharethis_large' displayText='ShareThis'></span>
         <script>
-   
-           $.getScript("http://w.sharethis.com/button/button.js",function(){
-               var switchTo5x=true;
-               stLight.options({publisher: "ur-f3b5f3ea-6a8b-185-941a-e61efe83a432", doNotHash: false, doNotCopy: false, hashAddressBar: true});    
-           });
-   
-       </script>
 
-    </div>
     
+            $.getScript("http://w.sharethis.com/button/button.js",function(){
+                var switchTo5x=true;
+                stLight.options({publisher: "ur-f3b5f3ea-6a8b-185-941a-e61efe83a432", doNotHash: false, doNotCopy: false, hashAddressBar: true});    
+            });
+
+    
+        </script>
+    </div>
+
 </div>
 <script>
     
@@ -194,7 +201,7 @@
         }
     );
     
-            $(".share").colorbox({inline:true,opacity:'0.15'});    
-        
+        $(".share").colorbox({inline:true,opacity:'0.15'});    
+
     });
 </script>

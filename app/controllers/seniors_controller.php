@@ -95,7 +95,7 @@ class SeniorsController extends AppController {
         $this->layout = 'three-column';
        // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'seniors')));
         $this->paginate = array(
-        'conditions' => array('PostDetail.related_to' => 'seniors','PostDetail.type !='=>'comment'),
+        'conditions' => array('PostDetail.related_to' => 'seniors'),
         'limit' =>6,'order'=>array('Post.created DESC')
     );
       $posts = $this->paginate('Post');
@@ -401,7 +401,7 @@ public function add_beat() {
                 $postId = $this->Post->getInsertId();
                 $data['PostDetail']['type'] = 'pink up';
                 $data['PostDetail']['post_id'] = $postId;
-                $data['PostDetail']['related_to'] = 'senior';
+                $data['PostDetail']['related_to'] = 'seniors';
                 $data['PostDetail']['status'] = 'active';
                 $this->PostDetail->save($data);
             }

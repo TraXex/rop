@@ -8,7 +8,13 @@
             <h2><?php echo $post['PostDetail']['type']; ?></h2>
 
             <div class="extra-actions">
-                <?php echo $this->Html->image("drop-down.png", array("alt" => "drop", 'class' => 'extra-actions')); ?>
+               <?php
+            $id=$this->Session->read('User.User.id');
+            if ($post['Post']['user_id'] == $id) {
+                
+                echo $this->Html->image("drop-down.png", array("alt" => "drop",'class'=>'drop-down' ,'url' =>"#"));
+            
+            ?>
                 <div class="action-list">
                     <ul>
                         <li><?php
@@ -19,10 +25,10 @@
                     echo $this->Html->link('Edit', array('controller' => 'fashions', 'action' => 'edit_news', $post['Post']['id']));
                 }
                 ?></li>
-                        <li><a href="#">Delete</a></li>
+                        <li><?php echo $this->Html->link('Delete',array('controller'=>'fashions','action'=>'delete',$post['Post']['id'])); ?></li>
                         <li><a href="#">Flag Post</a></li>
                     </ul>
-                </div>
+                </div><?php } ?>
             </div>
         </div>
         <div class="info">
