@@ -41,7 +41,10 @@ foreach ($posts as $post) {
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'gossips', 'action' => 'view_advice', $post['Post']['id']),array('escape' => false));
             }elseif ($post['PostDetail']['type'] == 'pink up') {
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'gossips', 'action' => 'view_pink_me_up', $post['Post']['id']),array('escape' => false));
-            } else {
+            }elseif ($post['PostDetail']['type'] == 'news') {
+                echo $this->Html->link($post['Post']['topic'], array('controller' => 'gossips', 'action' => 'view_news', $post['Post']['id']),array('escape' => false));
+            }  
+            else {
 
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'gossips', 'action' => 'view', $post['Post']['id']));
             }

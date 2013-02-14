@@ -34,7 +34,7 @@ foreach ($posts as $post) {
                 </div>
             </div>
             <div class="content">
-                 <h4><?php echo $this->Html->link($post['Post']['topic'],array('controller'=>'fashions','action'=>'view',$post['Post']['id'])); ?></h4>
+                 <h4><?php echo $this->Html->link($post['Post']['topic'],array('controller'=>'fashions','action'=>'view_news',$post['Post']['id'])); ?></h4>
                 <p><?php echo $this->Text->truncate($post['Post']['post'], '150', array('ending' => '...', 'exact' => false)); ?>...</p>
                 
             </div>

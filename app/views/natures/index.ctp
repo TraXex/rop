@@ -42,7 +42,9 @@ foreach ($posts as $post) {
                 }
                 elseif ($post['PostDetail']['type'] == 'pink up') {
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'natures', 'action' => 'view_pink_me_up', $post['Post']['id']),array('escape' => false));
-            }
+            }elseif ($post['PostDetail']['type'] == 'news') {
+                echo $this->Html->link($post['Post']['topic'], array('controller' => 'natures', 'action' => 'view_news', $post['Post']['id']),array('escape' => false));
+            } 
                 else{
                  echo $this->Html->link($post['Post']['topic'], array('controller' => 'natures', 'action' => 'view', $post['Post']['id']));   
                 }
