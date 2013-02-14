@@ -29,7 +29,7 @@
 <nav class="top-nav">
     <ul class="sf-menu">
         <li <?php if ($this->params['action'] == "sos" || $this->params['action'] == "view_sos") echo 'class="active"'; ?>><?php echo $this->Html->link('SOS', array('action' => 'sos'), array('class' => 'pink')); ?></li>
-        <li <?php if ($this->params['action'] == "news") echo 'class="active"'; ?>><?php echo $this->Html->link('News', array('action' => 'news')); ?></li>
+        <li <?php if ($this->params['action'] == "news"|| $this->params['action'] == "view_news") echo 'class="active"'; ?>><?php echo $this->Html->link('News', array('action' => 'news')); ?></li>
         <li <?php if ($this->params['action'] == "discussions" || $this->params['action'] == "view") echo 'class="active"'; ?>><?php echo $this->Html->link('Discussions', array('action' => 'discussions')); ?></li>
         <li <?php if ($this->params['action'] == "expert_advice" || $this->params['action'] == "view_advice") echo 'class="active"'; ?>><?php echo $this->Html->link('Expert Advice', array('action' => 'expert_advice')); ?></li>
         <li <?php if ($this->params['action'] == "pink_me_ups" || $this->params['action'] == "view_pink_me_up") echo 'class="active"'; ?>><?php echo $this->Html->link('Pink Me Up', array('action' => 'pink_me_ups')); ?></li>

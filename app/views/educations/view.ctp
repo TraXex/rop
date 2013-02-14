@@ -8,7 +8,13 @@
             <h2><?php echo $post['PostDetail']['type'];?></h2>
             <?php //echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'educations', 'action' => 'index'))); ?>
             <div class="extra-actions">
-                    <?php echo $this->Html->image("drop-down.png", array("alt" => "drop",'class'=>'extra-actions')); ?>
+                    <?php
+            $id=$this->Session->read('User.User.id');
+            if ($post['Post']['user_id'] == $id) {
+                
+                echo $this->Html->image("drop-down.png", array("alt" => "drop",'class'=>'drop-down' ,'url' =>"#"));
+            
+            ?>
                     <div class="action-list">
                         <ul>
                             <li><?php 
@@ -20,10 +26,10 @@
                                 echo $this->Html->link('Edit',array('controller'=>'educations','action'=>'edit_news',$post['Post']['id']));
                             }
                                 ?></li>
-                            <li><a href="#">Delete</a></li>
+                            <li><?php echo $this->Html->link('Delete',array('controller'=>'educations','action'=>'delete',$post['Post']['id'])); ?></li>
                             <li><a href="#">Flag Post</a></li>
                         </ul>
-                    </div>
+                    </div><?php } ?>
                 </div>
         </div>
         <div class="info">
@@ -67,7 +73,7 @@
                         <ul>
                             <li><?php echo $this->Html->image("comment-icon.png", array("alt" => "comments", 'url' => '#CommentComment')); ?></li>
                             <li><?php echo $this->Html->image("icon-02.png", array("alt" => "view", 'class' => 'view', 'title' => $post['PostDetail']['total_views'])); ?></li>
-                            <li><?php echo $this->Html->image("share-icon.png", array("alt" => "share")); ?></li>
+                            <li><a href="#share-this" class="share"><?php echo $this->Html->image("share-icon.png", array("alt" => "share")); ?></li>
                             <li><?php
                 $beats = $post['Heartbeat'];
 
@@ -112,7 +118,7 @@
                             </div>
                             <div class="right">
                                 <span><?php 
-                        $timeTook=$this->Time->timeAgoInWords( $post['Post']['created']);
+                        $timeTook=$this->Time->timeAgoInWords($comment['Comment']['created']);
                         $roundOff= strpos($timeTook,',');
                         if($roundOff){
                             echo substr( $timeTook,0,strpos($timeTook,','))." ago";
@@ -196,13 +202,12 @@
     );
     
     
-<<<<<<< HEAD
-             $.colorbox({html:$("#share-this").clone(),'opacity':'0.15'});
+
        
-=======
+
              $(".share").colorbox({inline:true,opacity:'0.15'});    
         
->>>>>>> 91344effea0d6276a7f73b9e5440104ce3b3011c
+
     });
 </script>
 

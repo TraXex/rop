@@ -6,7 +6,7 @@ foreach ($posts as $post) {
         
         <div class="title">
             <h2><?php echo $post['PostDetail']['type'];?></h2>
-            <?php echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'seniors', 'action' => 'index'))); ?>
+            <?php // echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'seniors', 'action' => 'index'))); ?>
 
         </div>
         <div class="info">
@@ -68,8 +68,11 @@ foreach ($posts as $post) {
             <div class="option-menu">
                 <nav class="options">
                     <ul>
-                        <li><?php echo $this->Html->image("comment-icon.png", array("alt" => "profile", 'url' => array('controller' => 'seniors', 'action' => 'index'))); ?></li>
-                        <li><?php echo $this->Html->image("icon-02.png", array("alt" => "profile", 'url' => array('controller' => 'seniors', 'action' => 'index'))); ?></li>
+                       <li><?php
+                        if ($post['PostDetail']['type']== 'pink up'){
+                         echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'cookings', 'action' => 'view_pink_me_up', $post['Post']['id'])));
+                        }?></li>
+                        <li><?php echo $this->Html->image("icon-02.png"); ?></li>
                     <!--    <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'seniors', 'action' => 'index'))); ?></li>
                         <li><?php echo $this->Html->image("beat-off.png", array("alt" => "profile", 'url' => array('controller' => 'seniors', 'action' => 'index'))); ?></li>
                     -->

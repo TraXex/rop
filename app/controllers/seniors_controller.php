@@ -95,7 +95,7 @@ class SeniorsController extends AppController {
         $this->layout = 'three-column';
        // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'seniors')));
         $this->paginate = array(
-        'conditions' => array('PostDetail.related_to' => 'seniors','PostDetail.type !='=>'comment'),
+        'conditions' => array('PostDetail.related_to' => 'seniors'),
         'limit' =>6,'order'=>array('Post.created DESC')
     );
       $posts = $this->paginate('Post');
@@ -278,6 +278,24 @@ class SeniorsController extends AppController {
         $this->set('beats', $beats);
     }
 
+    public function view_news($id) {
+
+        $post = $this->Post->find('first', array('conditions' => array('Post.id' => $id)));
+        $this->set('post', $post);
+
+        $views = $post['PostDetail']['total_views'] + 1;
+
+        $this->PostDetail->id = $post['PostDetail']['post_id'];
+        $this->PostDetail->saveField('total_views', $views);
+        $comments = $this->Comment->find('all', array('conditions' => array('post_id' => $id)));
+        
+        if(!empty($comments)){
+        $this->set('comments', $comments);
+        }
+        $beats = $this->Heartbeat->find('count', array('conditions' => array('post_id' => $id)));
+        $this->set('beats', $beats);
+    }
+    
     public function edit_discussion($id=null) {
         $post = $this->Post->find('first', array('conditions' => array('Post.id' => $id)));
         //pr($post);
@@ -401,7 +419,7 @@ public function add_beat() {
                 $postId = $this->Post->getInsertId();
                 $data['PostDetail']['type'] = 'pink up';
                 $data['PostDetail']['post_id'] = $postId;
-                $data['PostDetail']['related_to'] = 'senior';
+                $data['PostDetail']['related_to'] = 'seniors';
                 $data['PostDetail']['status'] = 'active';
                 $this->PostDetail->save($data);
             }

@@ -104,9 +104,9 @@ class JuniorsController extends AppController {
 
     public function discussions() {
         $this->layout = 'three-column';
-       // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'junior','PostDetail.type' => 'discussion')));
+      //  $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'seniors','PostDetail.type' => 'discussion')));
         $this->paginate = array(
-        'conditions' => array('PostDetail.related_to' => 'junior','PostDetail.type' => 'discussion'),
+        'conditions' => array('PostDetail.related_to' => 'juniors','PostDetail.type' => 'discussion'),
             'limit' =>4,'order'=>array('Post.created DESC')
             );
         
@@ -211,6 +211,24 @@ class JuniorsController extends AppController {
         $comments = $this->Comment->find('all', array('conditions' => array('post_id' => $id)));
         $this->set('comments', $comments);
 
+        $beats = $this->Heartbeat->find('count', array('conditions' => array('post_id' => $id)));
+        $this->set('beats', $beats);
+    }
+    
+    public function view_news($id) {
+
+        $post = $this->Post->find('first', array('conditions' => array('Post.id' => $id)));
+        $this->set('post', $post);
+
+        $views = $post['PostDetail']['total_views'] + 1;
+
+        $this->PostDetail->id = $post['PostDetail']['post_id'];
+        $this->PostDetail->saveField('total_views', $views);
+        $comments = $this->Comment->find('all', array('conditions' => array('post_id' => $id)));
+        
+        if(!empty($comments)){
+        $this->set('comments', $comments);
+        }
         $beats = $this->Heartbeat->find('count', array('conditions' => array('post_id' => $id)));
         $this->set('beats', $beats);
     }
