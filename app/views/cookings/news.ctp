@@ -37,11 +37,31 @@ foreach ($posts as $post) {
                 <p><?php echo $post['Post']['post'];?></p>
                 
             </div>
+            <div class="comment-div">
+                <ul>                    
+                    <?php $i=0;
+                    foreach ($post['Comment'] as $comment) {
+                        
+                        if($i<2){
+                        ?>
+
+                        <li>
+                            <?php echo $this->Html->image("center-profile-pic.jpg"); ?>
+                            <h3><?php $userId=$comment['user_id'];echo $users[$userId]['User']['username']  ?></h3>
+                            <p><?php echo $comment['comment']; ?></p>
+                        </li>
+    <?php }
+    $i++;
+    } ?>
+                </ul>
+                
+                <?php echo $this->Html->link('View more comments',array('controller'=>'cookings','action'=>'view_news',$post['Post']['id'])); ?>
+            </div>
             <div class="notification-div">
                 <ul class="counting">
                                         <li><span><?php echo $comments=count($post['Comment']);?></span></li>
                                         <li><span><?php echo $post['PostDetail']['total_views'];?></span></li>
-                                        <li><span><?php echo $post['PostDetail']['total_shares'];?></span></li>
+                                     <!--   <li><span><?php echo $post['PostDetail']['total_shares'];?></span></li>-->
                                         <li><span><?php echo $beats=count($post['Heartbeat']); ?></span></li>
                                     </ul>
             <div class="option-menu">
@@ -52,7 +72,7 @@ foreach ($posts as $post) {
                          echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'cookings', 'action' => 'view', $post['Post']['id'])));
                         }?></li>
                         <li><?php echo $this->Html->image("icon-02.png"); ?></li>
-                        <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'cookings', 'action' => 'index'))); ?></li>
+                      <!--  <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'cookings', 'action' => 'index'))); ?></li>-->
                         <li><?php echo $this->Html->image("beat-off.png", array("alt" => "profile")); ?></li>
                     </ul>
                 </nav>

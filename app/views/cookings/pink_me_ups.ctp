@@ -39,23 +39,44 @@ foreach ($posts as $post) {
             <div class="comment-div">
                 <ul>                    
                     <?php $i=0;
-                    foreach ($post['Advice'] as $advice) {
+                    foreach ($post['Reply'] as $reply) {
                         
                         if($i<2){
                         ?>
 
                         <li>
                             <?php echo $this->Html->image("center-profile-pic.jpg"); ?>
-                            <h3><?php $userId=$advice['user_id'];echo $users[$userId]['User']['username']  ?></h3>
+                            <h3><?php $userId=$reply['user_id'];echo $users[$userId]['User']['username']  ?></h3>
+                            <p><?php echo $reply['reply']; ?></p>
+                            <div class="helpful">
+                        <?php if (empty($reply['useful'])) {
+                        
                             
-                            <p><?php echo $this->Text->truncate($advice['advice'], '150', array('ending' => '...', 'exact' => false)); ?>...</p>
+                                    $id = $this->Session->read('User.User.id');
+                                    $replyId = $reply['id'];
+                                    if ($post['Post']['user_id'] == $id) {
+                                        ?>
+                                <ul>
+                                    <li><?php echo $this->Html->image("thumbs-up.jpg", array("alt" => $replyId, "class" => 'yes', "height" => "20")); ?></li>
+                                    <li><?php echo $this->Html->image("thumbs-down.jpg", array("alt" => $replyId, "class" => 'no', "height" => "20")); ?></li>                            
+                                </ul>
+                            <?php }
+                        } ?>
+                    </div>
+                
+                <?php
+                    if ($reply['useful'] == 'yes') {?>
+                <div class="pink-up-button">
+                                This pinked me up
+                            </div>
+                <?php }?>
                         </li>
     <?php }
     $i++;
     } ?>
                 </ul>
                 
-                <?php echo $this->Html->link('View Advice',array('controller'=>'cookings','action'=>'view_pink_me_up',$post['Post']['id'])); ?>
+                <?php echo $this->Html->link('View more replies',array('controller'=>'cookings','action'=>'view_pink_me_up',$post['Post']['id'])); ?>
             </div>
             <div class="notification-div">
                 <ul class="counting">

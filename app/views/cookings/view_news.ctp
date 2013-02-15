@@ -20,12 +20,12 @@
                         <li><?php
                 if ($post['PostDetail']['type'] == 'discussion') {
 
-                    echo $this->Html->link('Edit', array('controller' => 'fashions', 'action' => 'edit_discussion', $post['Post']['id']));
+                    echo $this->Html->link('Edit', array('controller' => 'cookings', 'action' => 'edit_discussion', $post['Post']['id']));
                 } else {
-                    echo $this->Html->link('Edit', array('controller' => 'fashions', 'action' => 'edit_news', $post['Post']['id']));
+                    echo $this->Html->link('Edit', array('controller' => 'cookings', 'action' => 'edit_news', $post['Post']['id']));
                 }
                 ?></li>
-                        <li><?php echo $this->Html->link('Delete',array('controller'=>'fashions','action'=>'delete',$post['Post']['id'])); ?></li>
+                        <li><?php echo $this->Html->link('Delete',array('controller'=>'cookings','action'=>'delete',$post['Post']['id'])); ?></li>
                         <li><a href="#">Flag Post</a></li>
                     </ul>
                 </div><?php } ?>
@@ -104,7 +104,7 @@
             ?>                       
             <div class="sos_div content-div">
                 <div class="title">
-                    <?php echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'fashions', 'action' => 'index'))); ?>
+                    <?php echo $this->Html->image("drop-down.png", array("alt" => "drop", 'url' => array('controller' => 'cookings', 'action' => 'index'))); ?>
                 </div>
                 <div class="info">
                     <div class="heading diff_heading">
@@ -145,7 +145,7 @@
     ?>
     <div class="add-comment">
         <?php
-        echo $form->create('Comment', array('url' => array('controller' => 'fashions', 'action' => 'add_comment')));
+        echo $form->create('Comment', array('url' => array('controller' => 'cookings', 'action' => 'add_comment')));
         echo $form->hidden('post_id', array('value' => $post['Post']['id']));
         echo $form->hidden('user_id', array('value' => $this->Session->read('User.User.id')));
         echo $form->hidden('type', array('value' => $post['PostDetail']['type']));

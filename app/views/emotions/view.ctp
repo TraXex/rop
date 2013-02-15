@@ -73,7 +73,7 @@
                         <ul>
                             <li><?php echo $this->Html->image("comment-icon.png", array("alt" => "comments", 'url' => '#CommentComment')); ?></li>
                             <li><?php echo $this->Html->image("icon-02.png", array("alt" => "view", 'class' => 'view', 'title' => $post['PostDetail']['total_views'])); ?></li>
-                            <li><a href="#share-this" class="share"><?php echo $this->Html->image("share-icon.png", array("alt" => "share")); ?></li>
+                            <li><a href="#share-this" class="share"><?php echo $this->Html->image("share-icon.png", array("alt" => "share")); ?></a></li>
                             <li><?php
                 $beats = $post['Heartbeat'];
 

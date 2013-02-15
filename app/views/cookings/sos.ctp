@@ -48,6 +48,33 @@ foreach ($posts as $post) {
                             <?php echo $this->Html->image("center-profile-pic.jpg"); ?>
                             <h3><?php $userId=$reply['user_id'];echo $users[$userId]['User']['username']  ?></h3>
                             <p><?php echo $reply['reply']; ?></p>
+                            <div class="helpful">
+                        <?php if(!empty($reply['useful'])){ ?>
+                            
+                        
+                        <ul>
+                            <li><?php
+                            if($reply['useful']=='yes'){
+                            echo $this->Html->image("thumbs-up.jpg", array("alt" => "thumbs-up", "height" => "20"));
+                            
+                            } 
+                            else{
+                            echo $this->Html->image("thumbs-down.jpg", array("alt" => "thumbs-down", "height" => "20")); 
+                            
+                            }?></li>                            
+                        </ul>
+                       <?php }else{
+                           
+                           $id=$this->Session->read('User.User.id');
+                           $replyId=$reply['id'];
+            if ($post['Post']['user_id'] == $id) {
+                           ?>
+                        <ul>
+                            <li><?php echo $this->Html->image("thumbs-up.jpg", array("alt" => $replyId,"class"=>'yes', "height" => "20")); ?></li>
+                            <li><?php echo $this->Html->image("thumbs-down.jpg", array("alt" =>$replyId ,"class"=>'no',"height" => "20")); ?></li>                            
+                        </ul>
+                        <?php }}?>
+                </div>
                         </li>
     <?php }
     $i++;

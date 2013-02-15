@@ -28,14 +28,20 @@ class EmotionsController extends AppController {
         }
     }
     public function add_comment() {
+        //pr($this->Session);
+        //echo $userId = $this->Authsome->get('id');
         $this->render(false);
         if (!empty($this->data)) {
             $this->Comment->save($this->data);
-            if($this->data['Comment']['type']=='expert advice'){
+            if ($this->data['Comment']['type'] == 'expert advice') {
                 $this->redirect(array('action' => 'view_advice', $this->data['Comment']['post_id']));
-            }
+            }else if($this->data['Comment']['type'] == 'news'){
+               $this->redirect(array('action' => 'view_news', $this->data['Comment']['post_id'])); 
+            }else{
             $this->redirect(array('action' => 'view', $this->data['Comment']['post_id']));
-//
+//            
+        }
+        
         }
     }
     public function add_news() {
@@ -100,6 +106,34 @@ class EmotionsController extends AppController {
     );
       $posts = $this->paginate('Post');
         $this->set('posts', $posts);
+        
+        $userIds = array();
+        foreach ($posts as $postData) {
+            if (!empty($postData['Comment'])) {
+                //print_r($postData['Reply']);
+                foreach ($postData['Comment'] as $repl) {
+                    $repUser = $repl['user_id'];
+                    if (!in_array($repUser, $userIds)) {
+                        $userIds[] = $repUser;
+                        $userData[$repUser] = $this->User->find('first', array('conditions' => array('User.id' => $repUser)));
+                    }
+                }
+            }
+            elseif (!empty($postData['Reply'])) {
+                //print_r($postData['Reply']);
+                foreach ($postData['Reply'] as $repl) {
+                    $repUser = $repl['user_id'];
+                    if (!in_array($repUser, $userIds)) {
+                        $userIds[] = $repUser;
+                        $userData[$repUser] = $this->User->find('first', array('conditions' => array('User.id' => $repUser)));
+                    }
+                }
+            }
+        }
+        
+        if (!empty($userData)) {
+            $this->set('users', $userData);
+        }
     }
 
     public function discussions() {
@@ -114,6 +148,24 @@ class EmotionsController extends AppController {
 
         $this->set('posts', $posts);
         $this->set('type', 'discussion');
+        
+        $userIds = array();
+        foreach ($posts as $postData) {
+            if (!empty($postData['Comment'])) {
+                //print_r($postData['Reply']);
+                foreach ($postData['Comment'] as $repl) {
+                    $repUser = $repl['user_id'];
+                    if (!in_array($repUser, $userIds)) {
+                        $userIds[] = $repUser;
+                        $userData[$repUser] = $this->User->find('first', array('conditions' => array('User.id' => $repUser)));
+                    }
+                }
+            }
+        }
+        
+        if (!empty($userData)) {
+            $this->set('users', $userData);
+        }
     }
 
     public function news() {
@@ -128,6 +180,24 @@ class EmotionsController extends AppController {
 
         $this->set('posts', $posts);
         $this->set('type', 'news');
+        
+        $userIds = array();
+        foreach ($posts as $postData) {
+            if (!empty($postData['Comment'])) {
+                //print_r($postData['Reply']);
+                foreach ($postData['Comment'] as $repl) {
+                    $repUser = $repl['user_id'];
+                    if (!in_array($repUser, $userIds)) {
+                        $userIds[] = $repUser;
+                        $userData[$repUser] = $this->User->find('first', array('conditions' => array('User.id' => $repUser)));
+                    }
+                }
+            }
+        }
+        
+        if (!empty($userData)) {
+            $this->set('users', $userData);
+        }
     }
 
     public function SOS() {
@@ -181,9 +251,9 @@ class EmotionsController extends AppController {
 
         $userIds = array();
         foreach ($posts as $postData) {
-            if (!empty($postData['Reply'])) {
+            if (!empty($postData['Comment'])) {
                 //print_r($postData['Reply']);
-                foreach ($postData['Reply'] as $repl) {
+                foreach ($postData['Comment'] as $repl) {
                     $repUser = $repl['user_id'];
                     if (!in_array($repUser, $userIds)) {
                         $userIds[] = $repUser;
@@ -192,10 +262,9 @@ class EmotionsController extends AppController {
                 }
             }
         }
-        //pr($userIds);
-        //pr($userData);
-        if(!empty($userData)){
-        $this->set('users', $userData);
+        
+        if (!empty($userData)) {
+            $this->set('users', $userData);
         }
 
     }
