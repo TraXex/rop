@@ -11,7 +11,7 @@ echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor
         </div>
         <div class="info">
             <div class="heading plain_textarea">
-                <?php echo $form->input('topic', array('class' => 'height-40','id' => 'ckeditor', 'type' => 'textarea', 'label' => false, 'div' => false)); ?>
+                <?php echo $form->input('topic', array('class' => 'height-40','class' => 'ckeditor', 'type' => 'textarea', 'label' => false, 'div' => false)); ?>
             </div>
         </div>
     </div>
