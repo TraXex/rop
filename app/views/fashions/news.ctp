@@ -1,4 +1,23 @@
 <?php
+function strip_tags_content($text, $tags = '', $invert = FALSE) {
+
+  preg_match_all('/<(.+?)[\s]*\/?[\s]*>/si', trim($tags), $tags);
+  $tags = array_unique($tags[1]);
+   
+  if(is_array($tags) AND count($tags) > 0) {
+    if($invert == FALSE) {
+      return preg_replace('@<(?!(?:'. implode('|', $tags) .')\b)(\w+)\b.*?>.*?</\1>@si', '', $text);
+    }
+    else {
+      return preg_replace('@<('. implode('|', $tags) .')\b.*?>.*?</\1>@si', '', $text);
+    }
+  }
+  elseif($invert == FALSE) {
+    return preg_replace('@<(\w+)\b.*?>.*?</\1>@si', '', $text);
+  }
+  return $text;
+} 
+
 foreach ($posts as $post) {
     ?>
     <div class="sos_div content-div">
@@ -35,7 +54,13 @@ foreach ($posts as $post) {
             </div>
             <div class="content">
                  <h4><?php echo $this->Html->link($post['Post']['topic'],array('controller'=>'fashions','action'=>'view_news',$post['Post']['id'])); ?></h4>
-                <p><?php echo $this->Text->truncate($post['Post']['post'], '150', array('ending' => '...', 'exact' => false)); ?>...</p>
+                <p><?php 
+                
+                $text=$post['Post']['post'];
+                //echo $text;
+                $clearText = preg_replace("/<img[^>]+\>|<embed[^>]+\>/i", " ", $text);
+                echo $clearText;
+                //echo $this->Text->truncate($post['Post']['post'], '150', array('ending' => '...', 'exact' => false)); ?></p>
                 
             </div>
             <div class="notification-div">
