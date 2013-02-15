@@ -54,6 +54,85 @@ foreach ($posts as $post) {
 
 
             </div>
+            <?php
+            if ($post['PostDetail']['type'] == 'discussion'||$post['PostDetail']['type'] == 'news'||$post['PostDetail']['type'] == 'expert advice') { ?>
+            <div class="comment-div">
+                <ul>                    
+                    <?php $i=0;
+                    foreach ($post['Comment'] as $comment) {
+                        
+                        if($i<2){
+                        ?>
+
+                        <li>
+                            <?php echo $this->Html->image("center-profile-pic.jpg"); ?>
+                            <h3><?php $userId=$comment['user_id'];echo $users[$userId]['User']['username']  ?></h3>
+                            <p><?php echo $comment['comment']; ?></p>
+                        </li>
+    <?php }
+    $i++;
+    } ?>
+                </ul>
+                
+                <?php
+            if ($post['PostDetail']['type'] == 'sos') {
+                echo $this->Html->link('view more replies', array('controller' => 'educations', 'action' => 'view_sos', $post['Post']['id']), array('escape' => false));
+            } elseif ($post['PostDetail']['type'] == 'expert advice') {
+
+                echo $this->Html->link('view more comments', array('controller' => 'educations', 'action' => 'view_advice', $post['Post']['id']),array('escape' => false));
+            }
+            elseif ($post['PostDetail']['type'] == 'pink up') {
+                echo $this->Html->link('view more replies', array('controller' => 'educations', 'action' => 'view_pink_me_up', $post['Post']['id']),array('escape' => false));
+            }elseif ($post['PostDetail']['type'] == 'news') {
+                echo $this->Html->link('view more comments', array('controller' => 'educations', 'action' => 'view_news', $post['Post']['id']),array('escape' => false));
+            } 
+            else {
+
+               
+                echo $this->Html->link('view more comments', array('controller' => 'educations', 'action' => 'view', $post['Post']['id']));
+            }
+                ?>
+            </div>
+            <?php } else {?>
+        <div class="comment-div">
+                <ul>                    
+                    <?php $i=0;
+                    foreach ($post['Reply'] as $reply) {
+                        
+                        if($i<2){
+                        ?>
+
+                        <li>
+                            <?php echo $this->Html->image("center-profile-pic.jpg"); ?>
+                            <h3><?php $userId=$reply['user_id'];echo $users[$userId]['User']['username']  ?></h3>
+                            <p><?php echo $reply['reply']; ?></p>
+                        </li>
+    <?php }
+    $i++;
+    } ?>
+                </ul>
+                
+                <?php
+            if ($post['PostDetail']['type'] == 'sos') {
+                echo $this->Html->link('view more replies', array('controller' => 'educations', 'action' => 'view_sos', $post['Post']['id']), array('escape' => false));
+            } elseif ($post['PostDetail']['type'] == 'expert advice') {
+
+                echo $this->Html->link('view more comments', array('controller' => 'educations', 'action' => 'view_advice', $post['Post']['id']),array('escape' => false));
+            }
+            elseif ($post['PostDetail']['type'] == 'pink up') {
+                echo $this->Html->link('view more replies', array('controller' => 'educations', 'action' => 'view_pink_me_up', $post['Post']['id']),array('escape' => false));
+            }elseif ($post['PostDetail']['type'] == 'news') {
+                echo $this->Html->link('view more comments', array('controller' => 'educations', 'action' => 'view_news', $post['Post']['id']),array('escape' => false));
+            } 
+            else {
+
+               
+                echo $this->Html->link('view more comments', array('controller' => 'educations', 'action' => 'view', $post['Post']['id']));
+            }
+                ?>
+            </div>
+        <?php } ?>
+        
             <div class="notification-div">
                 <ul class="counting">
                                         <li><span><?php 
@@ -69,7 +148,7 @@ foreach ($posts as $post) {
             }
                                         ?></span></li>
                                         <li><span><?php echo $post['PostDetail']['total_views'];?></span></li>
-                                        <li><span><?php echo $post['PostDetail']['total_shares'];?></span></li>
+                                   <!--     <li><span><?php echo $post['PostDetail']['total_shares'];?></span></li>-->
                                         <li><span><?php echo $beats=count($post['Heartbeat']); ?></span></li>
                                     </ul>
             <div class="option-menu">
@@ -100,7 +179,7 @@ foreach ($posts as $post) {
                             echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'educations', 'action' => 'view', $post['Post']['id']))); 
                         }
                             ?></li>
-                        <li><?php echo $this->Html->image("share-icon.png", array("alt" => "share-icon")); ?></li>
+                   <!--     <li><?php echo $this->Html->image("share-icon.png", array("alt" => "share-icon")); ?></li>-->
                         <li><?php $beats=count($post['Heartbeat']); echo $this->Html->image("beat-off.png", array('id' => $post['Post']['id'], "alt" => "beat-icon",'title'=>$beats, 'class' => 'like target'));?><div class="like-back"></div></li>
                     
                     </ul>

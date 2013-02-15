@@ -39,23 +39,22 @@ foreach ($posts as $post) {
             <div class="comment-div">
                 <ul>                    
                     <?php $i=0;
-                    foreach ($post['Advice'] as $advice) {
+                    foreach ($post['Comment'] as $comment) {
                         
                         if($i<2){
                         ?>
 
                         <li>
                             <?php echo $this->Html->image("center-profile-pic.jpg"); ?>
-                            <h3><?php $userId=$advice['user_id'];echo $users[$userId]['User']['username']  ?></h3>
-                            
-                            <p><?php echo $this->Text->truncate($advice['advice'], '150', array('ending' => '...', 'exact' => false)); ?>...</p>
+                            <h3><?php $userId=$comment['user_id'];echo $users[$userId]['User']['username']  ?></h3>
+                            <p><?php echo $comment['comment']; ?></p>
                         </li>
     <?php }
     $i++;
     } ?>
                 </ul>
                 
-                <?php echo $this->Html->link('View Advice',array('controller'=>'cookings','action'=>'view_advice',$post['Post']['id'])); ?>
+                <?php echo $this->Html->link('View more comments',array('controller'=>'cookings','action'=>'view_advice',$post['Post']['id'])); ?>
             </div>
             <div class="notification-div">
                 <ul class="counting">

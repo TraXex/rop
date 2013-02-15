@@ -39,23 +39,22 @@ foreach ($posts as $post) {
             <div class="comment-div">
                 <ul>                    
                     <?php $i=0;
-                    foreach ($post['Advice'] as $advice) {
+                    foreach ($post['Comment'] as $comment) {
                         
                         if($i<2){
                         ?>
 
                         <li>
                             <?php echo $this->Html->image("center-profile-pic.jpg"); ?>
-                            <h3><?php $userId=$advice['user_id'];echo $users[$userId]['User']['username']  ?></h3>
-                            
-                            <p><?php echo $this->Text->truncate($advice['advice'], '150', array('ending' => '...', 'exact' => false)); ?>...</p>
+                            <h3><?php $userId=$comment['user_id'];echo $users[$userId]['User']['username']  ?></h3>
+                            <p><?php echo $comment['comment']; ?></p>
                         </li>
     <?php }
     $i++;
     } ?>
                 </ul>
                 
-                <?php echo $this->Html->link('View Advice',array('controller'=>'emotions','action'=>'view_advice',$post['Post']['id'])); ?>
+                <?php echo $this->Html->link('View more comments',array('controller'=>'emotions','action'=>'view_advice',$post['Post']['id'])); ?>
             </div>
             <div class="notification-div">
                 <ul class="counting">
@@ -70,7 +69,7 @@ foreach ($posts as $post) {
                     <ul>
                         <li><?php
                         if ($post['PostDetail']['type']== 'expert advice'){
-                         echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'cookings', 'action' => 'view_advice', $post['Post']['id'])));
+                         echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'emotions', 'action' => 'view_advice', $post['Post']['id'])));
                         }?></li>
                         <li><?php echo $this->Html->image("icon-02.png"); ?></li>
                       <!--  <li><?php echo $this->Html->image("share-icon.png", array("alt" => "profile", 'url' => array('controller' => 'emotions', 'action' => 'index'))); ?></li>

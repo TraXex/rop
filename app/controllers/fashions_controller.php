@@ -38,9 +38,13 @@ class FashionsController extends AppController {
             $this->Comment->save($this->data);
             if ($this->data['Comment']['type'] == 'expert advice') {
                 $this->redirect(array('action' => 'view_advice', $this->data['Comment']['post_id']));
-            }
+            }else if($this->data['Comment']['type'] == 'news'){
+               $this->redirect(array('action' => 'view_news', $this->data['Comment']['post_id'])); 
+            }else{
             $this->redirect(array('action' => 'view', $this->data['Comment']['post_id']));
 //            
+        }
+        
         }
     }
 
@@ -107,6 +111,34 @@ class FashionsController extends AppController {
         $posts = $this->paginate('Post');
         //pr($posts);
         $this->set('posts', $posts);
+        
+        $userIds = array();
+        foreach ($posts as $postData) {
+            if (!empty($postData['Comment'])) {
+                //print_r($postData['Reply']);
+                foreach ($postData['Comment'] as $repl) {
+                    $repUser = $repl['user_id'];
+                    if (!in_array($repUser, $userIds)) {
+                        $userIds[] = $repUser;
+                        $userData[$repUser] = $this->User->find('first', array('conditions' => array('User.id' => $repUser)));
+                    }
+                }
+            }
+            elseif (!empty($postData['Reply'])) {
+                //print_r($postData['Reply']);
+                foreach ($postData['Reply'] as $repl) {
+                    $repUser = $repl['user_id'];
+                    if (!in_array($repUser, $userIds)) {
+                        $userIds[] = $repUser;
+                        $userData[$repUser] = $this->User->find('first', array('conditions' => array('User.id' => $repUser)));
+                    }
+                }
+            }
+        }
+        
+        if (!empty($userData)) {
+            $this->set('users', $userData);
+        }
     }
 
     public function discussions() {
@@ -121,6 +153,24 @@ class FashionsController extends AppController {
 
         $this->set('posts', $posts);
         $this->set('type', 'discussion');
+        
+        $userIds = array();
+        foreach ($posts as $postData) {
+            if (!empty($postData['Comment'])) {
+                //print_r($postData['Reply']);
+                foreach ($postData['Comment'] as $repl) {
+                    $repUser = $repl['user_id'];
+                    if (!in_array($repUser, $userIds)) {
+                        $userIds[] = $repUser;
+                        $userData[$repUser] = $this->User->find('first', array('conditions' => array('User.id' => $repUser)));
+                    }
+                }
+            }
+        }
+        
+        if (!empty($userData)) {
+            $this->set('users', $userData);
+        }
     }
 
     public function news() {
@@ -135,6 +185,24 @@ class FashionsController extends AppController {
 
         $this->set('posts', $posts);
         $this->set('type', 'news');
+        
+        $userIds = array();
+        foreach ($posts as $postData) {
+            if (!empty($postData['Comment'])) {
+                //print_r($postData['Reply']);
+                foreach ($postData['Comment'] as $repl) {
+                    $repUser = $repl['user_id'];
+                    if (!in_array($repUser, $userIds)) {
+                        $userIds[] = $repUser;
+                        $userData[$repUser] = $this->User->find('first', array('conditions' => array('User.id' => $repUser)));
+                    }
+                }
+            }
+        }
+        
+        if (!empty($userData)) {
+            $this->set('users', $userData);
+        }
     }
 
     public function SOS() {
@@ -188,10 +256,10 @@ class FashionsController extends AppController {
 
         $userIds = array();
         foreach ($posts as $postData) {
-            if (!empty($postData['Advice'])) {
+            if (!empty($postData['Comment'])) {
                 //print_r($postData['Reply']);
-                foreach ($postData['Advice'] as $advice) {
-                    $repUser = $advice['user_id'];
+                foreach ($postData['Comment'] as $repl) {
+                    $repUser = $repl['user_id'];
                     if (!in_array($repUser, $userIds)) {
                         $userIds[] = $repUser;
                         $userData[$repUser] = $this->User->find('first', array('conditions' => array('User.id' => $repUser)));
@@ -199,8 +267,7 @@ class FashionsController extends AppController {
                 }
             }
         }
-        //pr($userIds);
-        //pr($userData);
+        
         if (!empty($userData)) {
             $this->set('users', $userData);
         }
