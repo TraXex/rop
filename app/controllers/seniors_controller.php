@@ -58,7 +58,7 @@ class SeniorsController extends AppController {
                 $data['PostDetail']['status'] = 'active';
                 $this->PostDetail->save($data);
             }
-            $this->redirect(array('action' => 'view', $postId));
+            $this->redirect(array('action' => 'view_news', $postId));
         }
     }
 
@@ -103,7 +103,8 @@ class SeniorsController extends AppController {
         );
         $posts = $this->paginate('Post');
         $this->set('posts', $posts);
-
+        $this->set('type', "seniors");
+        
         $userIds = array();
         foreach ($posts as $postData) {
             if (!empty($postData['Comment'])) {
@@ -175,7 +176,7 @@ class SeniorsController extends AppController {
 
             if ($this->Post->save($this->data)) {
                 $this->Session->setFlash('Your post has been updated.');
-                $this->redirect(array('action' => 'view', $this->data['Post']['id']));
+                $this->redirect(array('action' => 'view_news', $this->data['Post']['id']));
             }
         }
     }

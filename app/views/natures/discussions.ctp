@@ -34,8 +34,13 @@ foreach ($posts as $post) {
             </div>
             <div class="content">
                 <h4><?php echo $this->Html->link($post['Post']['topic'],array('controller'=>'natures','action'=>'view',$post['Post']['id'])); ?></h4>
-                <p><?php echo $this->Text->truncate($post['Post']['post'], '150', array('ending' => '...', 'exact' => false)); ?>...</p>
-                
+                <p><?php 
+                $content = $post['Post']['post'];
+                        $clearText = preg_replace("/<img[^>]+\>|<object[^>]+\>/i", " ", $content);
+                        //echo $content;                
+                        //echo $clearText;
+                        echo $this->Text->truncate($clearText, '150', array('ending' => '...', 'exact' => false));
+                ?></p>
             </div>
             <div class="comment-div">
                 <ul>                    

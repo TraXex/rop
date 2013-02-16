@@ -68,6 +68,11 @@ class FashionsController extends AppController {
     }
 
     public function add_sos() {
+//        $userId = $this->Authsome->get('User.id');
+//        $timeLimit = date('Y-m-d',(strtotime("-1 month")));
+//        $sosCount=$this->Post->find('list',array('conditions'=>array('Post.user_id'=>$userId,'PostDetail.type'=>'sos','Post.created >' => $timeLimit)));
+//        pr($sosCount);
+        
         if (!empty($this->data)) {
             $this->Post->create();
             $this->data['Post'] = $this->data['Fashion'];
@@ -111,6 +116,7 @@ class FashionsController extends AppController {
         $posts = $this->paginate('Post');
         //pr($posts);
         $this->set('posts', $posts);
+        $this->set('type', 'fashion');
         
         $userIds = array();
         foreach ($posts as $postData) {
@@ -209,8 +215,9 @@ class FashionsController extends AppController {
 
         $this->layout = 'three-column';
         // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'fashion','PostDetail.type' => 'sos')));
+        $timeLimit = date('Y-m-d',(strtotime("-1 day")));
         $this->paginate = array(
-            'conditions' => array('PostDetail.related_to' => 'fashion', 'PostDetail.type' => 'sos'),
+            'conditions' => array('PostDetail.related_to' => 'fashion', 'PostDetail.type' => 'sos','Post.created >' => $timeLimit),
             'limit' => 4,'order'=>array('Post.created DESC')
         );
 
@@ -500,7 +507,7 @@ class FashionsController extends AppController {
 
             if ($this->Post->save($this->data)) {
                 $this->Session->setFlash('Your post has been updated.');
-                $this->redirect(array('action' => 'view',$this->data['Post']['id']));
+                $this->redirect(array('action' => 'view_news',$this->data['Post']['id']));
             }
         }
     }
@@ -563,6 +570,23 @@ class FashionsController extends AppController {
         array_push($commArray,$this->data['community']);
         
         $newList=implode(",",$commArray);
+        $this->Session->write('User.User.communities', $commList);
+        $this->set('list',$newList);
+        $this->User->id=$userId;
+        $this->User->saveField('communities',$newList);
+    }
+    
+    public function unsubscribe(){
+        $this->layout = false;
+        $userId = $this->Authsome->get('User.id');
+
+        $communities = $this->User->find('list', array('fields' => 'communities', 'conditions' => array('User.id' => $userId)));
+        $commList = $communities[$userId];
+        $commArray = explode(",", $commList);
+        $comm= $this->data['community'];
+        $newArray = array_diff($commArray,array($comm));
+        
+        $newList=implode(",",$newArray);
         
         $this->set('list',$newList);
         $this->User->id=$userId;

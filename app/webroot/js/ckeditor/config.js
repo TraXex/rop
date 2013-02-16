@@ -3,10 +3,18 @@ Copyright (c) 2003-2012, CKSource - Frederico Knabben. All rights reserved.
 For licensing, see LICENSE.html or http://ckeditor.com/license
 */
 
-
+CKEDITOR.on( 'dialogDefinition', function( ev ) {
+   var dialogName = ev.data.name;
+   var dialogDefinition = ev.data.definition;
+   if ( dialogName == 'image' ) {
+         dialogDefinition.removeContents( 'Link' );
+         dialogDefinition.removeContents( 'advanced' );
+         dialogDefinition.removeContents( 'Upload' );
+   }
+});
 CKEDITOR.editorConfig = function( config )
 {
-    
+     config.enterMode = CKEDITOR.ENTER_BR;
     config.toolbar = 'MyToolbar';
  
 	config.toolbar_MyToolbar =
@@ -21,12 +29,12 @@ CKEDITOR.editorConfig = function( config )
 		{ name: 'links', items : [ 'Link','Unlink','Anchor' ] },
 		
 	];
-	config.filebrowserBrowseUrl = 'rop/app/webroot/upload/type=files';
-   config.filebrowserImageBrowseUrl = 'rop/app/webroot/upload/?type=images';
-   config.filebrowserFlashBrowseUrl = 'rop/app/webroot/upload/?type=flash';
-   config.filebrowserUploadUrl = 'rop/app/webroot/upload/?type=files';
-   config.filebrowserImageUploadUrl = 'rop/app/webroot/upload/?type=images';
-   config.filebrowserFlashUploadUrl = 'rop/app/webroot/upload/?type=flash';
+//	config.filebrowserBrowseUrl = 'rop/app/webroot/upload/type=files';
+//   config.filebrowserImageBrowseUrl = 'rop/app/webroot/upload/?type=images';
+////   config.filebrowserFlashBrowseUrl = 'rop/app/webroot/upload/?type=flash';
+////   config.filebrowserUploadUrl = 'rop/app/webroot/upload/?type=files';
+////   config.filebrowserImageUploadUrl = 'rop/app/webroot/upload/?type=images';
+//   config.filebrowserFlashUploadUrl = 'rop/app/webroot/upload/?type=flash';
 
  config.extraPlugins = "youtube";
  

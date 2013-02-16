@@ -3,7 +3,7 @@
 //pr($users);
 foreach ($posts as $post) {
     ?>
-    <div class="sos_div content-div">
+    <div class="sos_div <?php if($post['PostDetail']['type']!='sos') echo "content-div"; ?>">
 
         <div class="title">
             <h2><?php echo $post['PostDetail']['type']; ?></h2>
@@ -52,8 +52,13 @@ foreach ($posts as $post) {
                 echo $this->Html->link($post['Post']['topic'], array('controller' => 'cookings', 'action' => 'view', $post['Post']['id']));
             }
                 ?></h4>
-                <p><?php echo $this->Text->truncate($post['Post']['post'], '150', array('ellipsis' => '...', 'exact' => false,'html'=>false)); ?></p>
-
+                <p><?php 
+                $content = $post['Post']['post'];
+                        $clearText = preg_replace("/<img[^>]+\>|<object[^>]+\>/i", " ", $content);
+                        //echo $content;                
+                        //echo $clearText;
+                        echo $this->Text->truncate($clearText, '150', array('ending' => '...', 'exact' => false));
+                ?></p>
 
             </div>
            <?php

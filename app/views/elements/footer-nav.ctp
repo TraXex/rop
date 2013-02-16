@@ -1,5 +1,5 @@
 <ul class="sf-menu">
-    <li <? if($this->params['controller'] == "home") echo 'class="active"'; ?>><?php echo $this->Html->image("home-icon.png", array("alt" => "logo", 'url' => array('controller' => 'home', 'action' => 'index'))); ?></li>
+    <li <? if($this->params['controller'] == "home") echo ''; ?>class="pink"><?php echo $this->Html->image("home-icon.png", array("alt" => "logo", 'url' => array('controller' => 'home', 'action' => 'index'))); ?></li>
     <li><?php echo $this->Html->link('Events',array('controller'=>'fashions','action'=>'coming_soon')); ?></li>
     <li <? if($this->params['controller'] == "fashions") echo 'class="active"'; ?>><?php echo $this->Html->link('Fashion',array('controller'=>'fashions','action'=>'index')); ?></li>
     <li <? if($this->params['controller'] == "educations") echo 'class="active"'; ?>><?php echo $this->Html->link('Education',array('controller'=>'educations','action'=>'index')); ?></li>

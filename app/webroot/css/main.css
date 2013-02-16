@@ -941,7 +941,7 @@ h1.border {
     float: left;
     margin: 0;
     position: absolute;
-    right: 19px;
+    right: 23px;
     top: 4px; }
 #pagewidth .two-col .right-col .widget_577 .sos_div .info .notification-div .counting li {
     float: right;
@@ -961,10 +961,10 @@ h1.border {
 #pagewidth .two-col .right-col .widget_577 .sos_div .info .notification-div .option-menu {
     /*height:102px;*/
     position: absolute;
-    background: url("../images/option-bottom.png") no-repeat scroll right bottom;
+    background: url("../img/option-bottom.png") no-repeat scroll right bottom;
     float: right;
     width: 62%;
-    right: -4px;
+    right: 0px;
     top: 9%;
     /* span{float:right;width:4px;height:5px;position:absolute;bottom:0;
             img{float:left;} 
@@ -1104,6 +1104,7 @@ h1.border {
 #pagewidth .two-col .right-col .widget_195 .top-info p {
     color: #dc096e;
     font-size: 0.703em;
+    line-height: 1.1em;
     float: left;
     width: 72%;
     padding: 0 4.59%; }
@@ -1210,6 +1211,7 @@ h1.border {
     padding: 2% 2%; }
 #pagewidth .two-col .right-col .widget_804 .sos_div .info .heading img {
     float: left;
+        cursor: pointer;
     padding: 0 1% 0 0; }
 #pagewidth .two-col .right-col .widget_804 .sos_div .info .heading .inner-heading {
     width: 80.07%;
@@ -1591,7 +1593,7 @@ h1.border {
     /* IE6-8 */ }
 #pagewidth .two-col .main-menu {
     height: 33px;
-    float: left;
+    left: 14%;
     position: fixed;
     bottom: 0;
     background: #e7e7e7;
@@ -1807,3 +1809,7 @@ h1.border {
 
 #hidden-elements{display: none;}
 #share-this{padding:15px 20px 10px 20px;}
+
+#pagewidth .two-col .main-menu ul .pink:hover {
+    background: none repeat scroll 0 0 transparent;
+}

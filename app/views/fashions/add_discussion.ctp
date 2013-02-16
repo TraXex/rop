@@ -19,7 +19,7 @@
         <div class="info">
             <div class="heading plain_textarea">
                 
-                <?php echo $form->input('post', array('type' => 'textarea', 'class' => 'ckeditor', 'class' => 'height-233', 'div' => false, 'label' => false)); ?>
+                <?php echo $form->input('post', array('type' => 'textarea', 'class' => 'ckeditor', 'div' => false, 'label' => false)); ?>
             </div>
         </div>
     </div>

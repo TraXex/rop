@@ -58,7 +58,7 @@ class GossipsController extends AppController {
                 $data['PostDetail']['status'] = 'active';
                 $this->PostDetail->save($data);
             }
-            $this->redirect(array('action' => 'view', $postId));
+            $this->redirect(array('action' => 'view_news', $postId));
         }
     }
 
@@ -102,6 +102,7 @@ class GossipsController extends AppController {
             'limit' => 6, 'order' => array('Post.created DESC')
         );
         $posts = $this->paginate('Post');
+        $this->set('type', "gossip");
 
         $this->set('posts', $posts);
 
@@ -326,7 +327,7 @@ class GossipsController extends AppController {
 
             if ($this->Post->save($this->data)) {
                 $this->Session->setFlash('Your post has been updated.');
-                $this->redirect(array('action' => 'view', $this->data['Post']['id']));
+                $this->redirect(array('action' => 'view_news', $this->data['Post']['id']));
             }
         }
     }

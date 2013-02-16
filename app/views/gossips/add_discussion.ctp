@@ -40,7 +40,3 @@ echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor
 
 
 </div>
-<script>
-CKEDITOR.replace( 'ckeditor',{
-    toolbar:'MyToolbar'} );
-</script>
