@@ -10,7 +10,28 @@
                 <?php echo $form->input('topic', array('class' => 'height-40', 'type' => 'textarea', 'label' => false, 'div' => false)); ?>
             </div>
         </div>
+    </div><div class="sos_div content-div">
+        <div class="title">
+            <h2>Image URL</h2>
+        </div>
+        <div class="info">
+            <div class="heading plain_textarea">
+                <?php echo $form->input('image_url', array('class' => 'height-40', 'type' => 'textarea', 'label' => false, 'div' => false)); ?>
+            </div>
+        </div>
     </div>
+    <div class="sos_div content-div">
+        <div class="title">
+            <h2>Video Embed Code</h2>
+        </div>
+        <div class="info">
+            <div class="heading plain_textarea">
+                <?php echo $form->input('video_url', array('class' => 'height-40', 'type' => 'textarea', 'label' => false, 'div' => false)); ?>
+            </div>
+        </div>
+    </div>
+    
+    
 
     <div class="sos_div content-div">
         <div class="title">
@@ -19,7 +40,7 @@
         <div class="info">
             <div class="heading plain_textarea">
                 
-                <?php echo $form->input('post', array('type' => 'textarea', 'class' => 'height-233 ckeditor', 'div' => false, 'label' => false)); ?>
+                <?php echo $form->input('post', array('type' => 'textarea', 'id' => 'ckeditor', 'div' => false, 'label' => false)); ?>
                 
             </div>
         </div>
@@ -43,3 +64,7 @@
 echo $this->Html->script('ckeditor/ckeditor');
 echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor.js file on the page you want to use the editor.
 ?>
+<script>
+CKEDITOR.replace( 'ckeditor',{
+    toolbar:'MyToolbar'} );
+</script>

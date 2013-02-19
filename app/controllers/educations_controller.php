@@ -266,7 +266,7 @@ class EducationsController extends AppController {
         }
     }
 
-    public function view($id) {
+   public function view($id) {
 
         $post = $this->Post->find('first', array('conditions' => array('Post.id' => $id)));
         $this->set('post', $post);
@@ -276,8 +276,10 @@ class EducationsController extends AppController {
         $this->PostDetail->id = $post['PostDetail']['post_id'];
         $this->PostDetail->saveField('total_views', $views);
         $comments = $this->Comment->find('all', array('conditions' => array('post_id' => $id)));
+        
+        if(!empty($comments)){
         $this->set('comments', $comments);
-
+        }
         $beats = $this->Heartbeat->find('count', array('conditions' => array('post_id' => $id)));
         $this->set('beats', $beats);
     }
@@ -311,7 +313,7 @@ class EducationsController extends AppController {
 
             if ($this->Post->save($this->data)) {
                 $this->Session->setFlash('Your post has been updated.');
-                $this->redirect(array('action' => 'index'));
+                $this->redirect(array('action' => 'view',$this->data['Post']['id']));
             }
         }
     }

@@ -60,10 +60,10 @@
                     
                     echo "<div class=post_image><img src=".$post['Post']['image_url']."></div>";
                     echo "<div class='post_video'>".$post['Post']['video_url']."</div>";
-                }else{
+                }elseif(!empty($post['Post']['video_url'])){
                     echo "<div class='post_video'>".$post['Post']['video_url']."</div>";
                 }
-?>
+                 ?>
                 <p><?php echo $post['Post']['post']; ?></p>
 
             </div>

@@ -167,7 +167,9 @@ foreach ($posts as $post) {
                 echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'gossips', 'action' => 'view_advice', $post['Post']['id'])));
             }elseif ($post['PostDetail']['type'] == 'pink up') {
                 echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'gossips', 'action' => 'view_pink_me_up', $post['Post']['id'])));
-            }
+            }elseif ($post['PostDetail']['type'] == 'news') {
+                echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'gossips', 'action' => 'view_news', $post['Post']['id'])));
+            } 
             else {
                 echo $this->Html->image("comment-icon.png", array("alt" => "comment-icon",'class'=>'comment target','title'=>$comments, 'url' => array('controller' => 'gossips', 'action' => 'view', $post['Post']['id'])));
             }
@@ -181,7 +183,10 @@ foreach ($posts as $post) {
                                 echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'gossips', 'action' => 'view_advice', $post['Post']['id']))); 
                         }elseif ($post['PostDetail']['type']== 'pink up'){
                                 echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'gossips', 'action' => 'view_pink_me_up', $post['Post']['id']))); 
-                        }else{
+                        }elseif ($post['PostDetail']['type']== 'news'){
+                                echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'gossips', 'action' => 'view_news', $post['Post']['id']))); 
+                        }
+                        else{
                             echo $this->Html->image("icon-02.png", array("alt" => "view-icon",'class'=>'view target','title'=>$post['PostDetail']['total_views'], 'url' => array('controller' => 'gossips', 'action' => 'view', $post['Post']['id']))); 
                         }
                             ?></li>

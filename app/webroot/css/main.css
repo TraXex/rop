@@ -1668,7 +1668,7 @@ h1.border {
                position: absolute;
                width: 76px;}
 .like{
-    
+ cursor: pointer;   
 }
 #pagewidth .two-col .right-col .widget_804 .sos_div .info .notification-div {
     position: absolute;

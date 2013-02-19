@@ -62,7 +62,7 @@ class FashionsController extends AppController {
                 $data['PostDetail']['status'] = 'active';
                 $this->PostDetail->save($data);
             }   
-           $this->redirect(array('action' => 'view', $postId));
+           $this->redirect(array('action' => 'view_news', $postId));
 
         }
     }
