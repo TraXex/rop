@@ -1813,3 +1813,7 @@ h1.border {
 #pagewidth .two-col .main-menu ul .pink:hover {
     background: none repeat scroll 0 0 transparent;
 }
+
+.post_image,.post_video{
+   margin: 15px auto; 
+}
