@@ -1271,7 +1271,7 @@ h1.border {
 #pagewidth .two-col .right-col .widget_804 .sos_div .info .content h4 {
     color: #6d6e71;
     font-family: 'open_sansbold';
-    padding: 0 0 1% 0; }
+    padding: 0 0 2% 0; }
 #pagewidth .two-col .right-col .widget_804 .sos_div .info .content p {
     font-size: 0.691em;
     color: #6d6e71;
@@ -1814,6 +1814,8 @@ h1.border {
     background: none repeat scroll 0 0 transparent;
 }
 
-.post_image,.post_video{
+.post_video{
    margin: 15px auto; 
 }
+.post_image{float:left;padding: 0 15px 0 0;}
+#pagewidth .two-col .widget_804 .sos_div .info .content .flexible-para{display:block;padding: 0 0 5px 0;}

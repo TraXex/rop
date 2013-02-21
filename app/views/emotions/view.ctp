@@ -58,15 +58,14 @@
                 <h4><?php echo $post['Post']['topic']; ?></h4>
                 
                 <?php if(!empty($post['Post']['image_url'])){
-                    
+                       
                     echo "<div class=post_image><img src=".$post['Post']['image_url']."></div>";
+                    
+                }?>
+                <p class="flexible-para"><?php echo $post['Post']['post']; ?></p>
+                <?php if(!empty($post['Post']['video_url'])){
                     echo "<div class='post_video'>".$post['Post']['video_url']."</div>";
-                }elseif(!empty($post['Post']['video_url'])){
-                    echo "<div class='post_video'>".$post['Post']['video_url']."</div>";
-                }
-                 ?>
-                <p><?php echo $post['Post']['post']; ?></p>
-
+                }?>
             </div>
 
             <div class="notification-div">
