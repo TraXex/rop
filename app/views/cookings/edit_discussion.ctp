@@ -49,7 +49,7 @@ echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor
             <div class="info">
                 <div class="heading plain_textarea">
                     <?php
-                    echo $form->input('post', array('class' => 'height-233','class' => 'ckeditor','div' => false, 'label' => false, 'value' => $post['Post']['post'], 'type' => 'textarea'));
+                    echo $form->input('post', array('class' => 'height-233','id' => 'ckeditor','div' => false, 'label' => false, 'value' => $post['Post']['post'], 'type' => 'textarea'));
                     ?>
 
                 </div>
@@ -67,3 +67,7 @@ echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor
 
         
 </div>
+<script>
+CKEDITOR.replace( 'ckeditor',{
+    toolbar:'MyToolbar'} );
+</script>

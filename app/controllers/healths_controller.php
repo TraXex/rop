@@ -298,7 +298,7 @@ class HealthsController extends AppController {
         $this->set('beats', $beats);
     }
 
-    public function edit_discussion($id = null) {
+   public function edit_discussion($id = null) {
         $post = $this->Post->find('first', array('conditions' => array('Post.id' => $id)));
         //pr($post);
         $this->set('post', $post);
@@ -309,7 +309,7 @@ class HealthsController extends AppController {
 
             if ($this->Post->save($this->data)) {
                 $this->Session->setFlash('Your post has been updated.');
-                $this->redirect(array('action' => 'index'));
+                $this->redirect(array('action' => 'view',$this->data['Post']['id']));
             }
         }
     }

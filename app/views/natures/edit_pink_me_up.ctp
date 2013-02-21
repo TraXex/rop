@@ -14,11 +14,21 @@ echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor
                 
                     echo $form->create('Nature', array('action' => 'edit_pink_me_up'));
                     echo $form->hidden('id', array('value' => $post['Post']['id'], 'type' => 'textarea', 'rows' => '1'));
-                    echo $form->input('topic', array('class' => 'height-40','class' => 'ckeditor', 'div' => false, 'label' => false, 'value' => $post['Post']['topic'], 'type' => 'textarea', 'rows' => '1'));
+                    echo $form->input('topic', array('class' => 'height-40','id' => 'ckeditor', 'div' => false, 'label' => false, 'value' => $post['Post']['topic'], 'type' => 'textarea', 'rows' => '1'));
                     ?>
                 </div>
             </div>
         </div>
+    <div class="sos_div content-div">
+        <div class="title">
+            <h2>Image URL</h2>
+        </div>
+        <div class="info">
+            <div class="heading plain_textarea">
+                <?php echo $form->input('image_url', array('value' => $post['Post']['image_url'], 'class' => 'height-40', 'type' => 'textarea', 'label' => false, 'div' => false)); ?>
+            </div>
+        </div>
+    </div>
 
 
 

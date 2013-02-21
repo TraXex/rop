@@ -19,6 +19,27 @@ echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor
                 </div>
             </div>
         </div>
+    
+    <div class="sos_div content-div">
+        <div class="title">
+            <h2>Image URL</h2>
+        </div>
+        <div class="info">
+            <div class="heading plain_textarea">
+                <?php echo $form->input('image_url', array('value' => $post['Post']['image_url'], 'class' => 'height-40', 'type' => 'textarea', 'label' => false, 'div' => false)); ?>
+            </div>
+        </div>
+    </div>
+    <div class="sos_div content-div">
+        <div class="title">
+            <h2>Video Embed Code</h2>
+        </div>
+        <div class="info">
+            <div class="heading plain_textarea">
+            <?php echo $form->input('video_url', array('value' => $post['Post']['video_url'], 'class' => 'height-40', 'type' => 'textarea', 'label' => false, 'div' => false)); ?>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -30,7 +51,7 @@ echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor
             <div class="info">
                 <div class="heading plain_textarea">
                     <?php
-                    echo $form->input('post', array('class' => 'height-233','class' => 'ckeditor', 'div' => false, 'label' => false, 'value' => $post['Post']['post'], 'type' => 'textarea'));
+                    echo $form->input('post', array('class' => 'height-233','id' => 'ckeditor', 'div' => false, 'label' => false, 'value' => $post['Post']['post'], 'type' => 'textarea'));
                     ?>
 
                 </div>
@@ -48,3 +69,7 @@ echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor
 
         
 </div>
+<script>
+CKEDITOR.replace( 'ckeditor',{
+    toolbar:'MyToolbar'} );
+</script>
