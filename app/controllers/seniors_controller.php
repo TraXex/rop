@@ -445,11 +445,11 @@ class SeniorsController extends AppController {
     }
 
     public function pink_me_ups() {
-
+        
         $this->layout = 'three-column';
-        // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'esnior','PostDetail.type' => 'advice')));
+        // $posts = $this->Post->find('all', array('conditions' => array('PostDetail.related_to' => 'emotion','PostDetail.type' => 'advice')));
         $this->paginate = array(
-            'conditions' => array('PostDetail.related_to' => 'senior', 'PostDetail.type' => 'pink up'),
+            'conditions' => array('PostDetail.related_to' => 'seniors', 'PostDetail.type' => 'pink up'),
             'limit' => 4
         );
 
@@ -477,7 +477,6 @@ class SeniorsController extends AppController {
             $this->set('users', $userData);
         }
     }
-
     public function add_pink_me_up() {
         if (!empty($this->data)) {
             $this->Post->create();

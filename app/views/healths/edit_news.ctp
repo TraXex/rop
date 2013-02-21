@@ -59,12 +59,11 @@ echo $this->Html->script('WEB_ROOT'.'js/ckeditor/ckeditor'); //Link the ckeditor
         </div>
         <div class="gray-buttons">
             <?php
-            echo $form->end(array('value' => 'create', 'id' => 'button', 'div' => false));
+            echo $form->end(array('value' => 'create', 'class' => 'button', 'div' => false));
             ?>
             
             <input type="button" value="Reset" class="button">
         </div>
-
 
 
         

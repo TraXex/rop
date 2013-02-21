@@ -1700,7 +1700,7 @@ h1.border {
 #pagewidth .two-col .right-col .widget_804 .sos_div .info .notification-div .option-menu {
     /*height:102px;*/
     position: absolute;
-    background: url("../images/option-bottom.png") no-repeat scroll right bottom;
+    background: url("../img/option-bottom.png") no-repeat scroll right bottom;
     float: right;
     width: 62%;
     right: -4px;
